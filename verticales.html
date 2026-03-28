@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fractal — Verticales de Negocio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0d0b;--cream:#f5f0e8;--gold:#b8935a;--gold-l:#d4b07a;
+  --stone:#7a7468;--w:#fff;--red:rgba(200,80,80,.85);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:18px 56px}
+.nav-logo{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-back{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s}
+.nav-back:hover{color:var(--gold)}
+.nav-tabs{display:flex;gap:0}
+.nav-tab{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.5);padding:8px 20px;cursor:pointer;transition:all .2s;border:none;background:transparent;font-family:var(--sans)}
+.nav-tab:hover{color:var(--cream)}
+.nav-tab.active{color:var(--gold);border-bottom:2px solid var(--gold)}
+
+/* HERO */
+.page-hero{padding:80px 56px 0;position:relative}
+.ph-tag{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.ph-tag::before{content:'';width:28px;height:2px;background:var(--gold)}
+.ph-title{font-family:var(--serif);font-size:clamp(40px,6vw,80px);font-weight:300;color:var(--w);line-height:1;margin-bottom:20px}
+.ph-title em{font-style:italic;color:var(--gold-l)}
+.ph-sub{font-size:16px;color:var(--stone);line-height:1.75;max-width:640px;margin-bottom:0}
+
+/* VERTICAL TABS */
+.vert-tabs{display:flex;gap:1px;background:rgba(122,116,104,.12);border-top:1px solid rgba(122,116,104,.12);margin-top:60px}
+.vert-tab{flex:1;padding:28px 40px;cursor:pointer;transition:all .2s;border:none;background:#0a0a08;font-family:var(--sans);text-align:left;position:relative}
+.vert-tab:hover{background:#0f0f0d}
+.vert-tab.active{background:#111009;border-top:3px solid var(--gold)}
+.vt-num{font-family:var(--serif);font-size:36px;font-weight:300;color:rgba(184,147,90,.2);line-height:1;margin-bottom:8px}
+.vert-tab.active .vt-num{color:var(--gold)}
+.vt-name{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-bottom:6px;font-weight:500}
+.vert-tab.active .vt-name{color:var(--gold)}
+.vt-title{font-family:var(--serif);font-size:20px;font-weight:300;color:rgba(245,240,232,.6);line-height:1.2}
+.vert-tab.active .vt-title{color:var(--cream)}
+.vt-tag{position:absolute;top:16px;right:16px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(122,116,104,.2);color:var(--stone)}
+.vert-tab.active .vt-tag{border-color:rgba(184,147,90,.3);color:var(--gold)}
+
+/* CONTENT PANELS */
+.vert-content{display:none}
+.vert-content.active{display:block}
+
+/* DIVIDER */
+.v-divider{display:flex;align-items:center;gap:0;width:100%;overflow:hidden;padding:0}
+.vd-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(184,147,90,.3) 20%,rgba(184,147,90,.3) 80%,transparent)}
+.vd-dots{display:flex;gap:10px;padding:0 24px;flex-shrink:0}
+.vd-dots span{width:4px;height:4px;border-radius:50%;background:rgba(184,147,90,.4)}
+.vd-dots span:nth-child(2){background:var(--gold);width:6px;height:6px}
+
+/* SECTION UTIL */
+.sec{padding:72px 56px}
+.sec-inner{max-width:1200px;margin:0 auto}
+.sec-tag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.sec-tag::before{content:'';width:20px;height:2px;background:var(--gold)}
+.sec-h2{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;color:var(--cream);margin-bottom:16px;line-height:1.1}
+.sec-p{font-size:14px;color:var(--stone);line-height:1.75;max-width:680px}
+
+/* STAT GRID */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.12);border:1px solid rgba(122,116,104,.12);margin:40px 0}
+.stat-box{background:#0d0d0b;padding:28px 24px;text-align:center}
+.stat-num{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;color:var(--gold);line-height:1;margin-bottom:6px}
+.stat-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);line-height:1.4}
+
+/* TWO COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1)}
+.col-card{background:#0d0d0b;padding:32px 28px}
+.col-card h4{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);margin-bottom:10px}
+.col-card p{font-size:13px;color:var(--stone);line-height:1.65}
+.col-num{font-family:var(--serif);font-size:44px;font-weight:300;color:rgba(184,147,90,.18);line-height:1;margin-bottom:8px}
+
+/* ROWS */
+.row-table{display:flex;flex-direction:column;gap:0}
+.rt-row{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(122,116,104,.08);font-size:13px;gap:16px}
+.rt-row:last-child{border-bottom:none}
+.rt-label{color:rgba(245,240,232,.5);flex:1}
+.rt-val{font-family:var(--serif);font-size:18px;font-weight:300;color:var(--cream)}
+.rt-val.gold{color:var(--gold)}
+.rt-val.red{color:var(--red)}
+.rt-row.total{border-top:1px solid rgba(184,147,90,.2);padding-top:14px;margin-top:4px}
+.rt-row.total .rt-label{font-weight:500;color:var(--cream)}
+
+/* PROYECCION TABLE */
+.proy-table{width:100%;border-collapse:collapse;margin-top:32px;font-size:13px}
+.proy-table th{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);padding:10px 14px;text-align:right;border-bottom:1px solid rgba(122,116,104,.2);font-weight:400}
+.proy-table th:first-child{text-align:left}
+.proy-table td{padding:10px 14px;text-align:right;border-bottom:1px solid rgba(122,116,104,.06)}
+.proy-table td:first-child{text-align:left;color:var(--cream)}
+.proy-table tr:hover td{background:rgba(122,116,104,.04)}
+.proy-table .gold-td{color:var(--gold);font-family:var(--serif);font-size:15px}
+.proy-table .muted{color:var(--stone)}
+.proy-table .total-row td{border-top:1px solid rgba(184,147,90,.2);color:var(--gold);font-weight:500}
+
+/* LEGAL */
+.legal-box{background:#0a0a08;border:1px solid rgba(122,116,104,.15);padding:20px 24px;margin-top:32px}
+.legal-box p{font-size:11px;color:rgba(122,116,104,.5);line-height:1.65}
+
+/* BENCHMARK */
+.bench-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);margin:32px 0}
+.bench-item{background:#0d0d0b;padding:24px 20px;text-align:center}
+.bench-item.highlight{background:#111009;border-top:2px solid var(--gold)}
+.bench-name{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:8px}
+.bench-num{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--cream);margin-bottom:4px}
+.bench-sub{font-size:11px;color:rgba(122,116,104,.5)}
+.bench-item.highlight .bench-num{color:var(--gold)}
+
+/* LEGAL STRUCT */
+.legal-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1);margin:32px 0}
+.ls-item{background:#0d0d0b;padding:24px 20px;position:relative}
+.ls-num{font-family:var(--serif);font-size:40px;font-weight:300;color:rgba(184,147,90,.15);margin-bottom:8px}
+.ls-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
+.ls-desc{font-size:12px;color:var(--stone);line-height:1.6}
+.ls-arrow{position:absolute;top:50%;right:-12px;transform:translateY(-50%);font-size:18px;color:rgba(184,147,90,.3);z-index:2}
+
+/* RISK GRID */
+.risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
+.risk-item{background:#0a0a08;border:1px solid rgba(122,116,104,.12);padding:20px 22px}
+.risk-name{font-size:12px;font-weight:500;color:var(--cream);margin-bottom:6px}
+.risk-desc{font-size:12px;color:var(--stone);line-height:1.6}
+.risk-sol{font-size:11px;color:rgba(184,147,90,.6);margin-top:8px;border-top:1px solid rgba(122,116,104,.1);padding-top:8px}
+
+/* BOATS */
+.boat-features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+.bf-item{background:#0d0d0b;border:1px solid rgba(122,116,104,.1);padding:24px 22px}
+.bf-icon{font-size:28px;margin-bottom:12px}
+.bf-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
+.bf-desc{font-size:12px;color:var(--stone);line-height:1.6}
+
+/* DEST GRID */
+.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
+.dest-item{background:#111009;border:1px solid rgba(122,116,104,.12);padding:20px;text-align:center}
+.dest-name{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:4px}
+.dest-sub{font-size:11px;color:var(--stone)}
+
+/* CTA */
+.vert-cta{background:#111009;border:1px solid rgba(184,147,90,.2);padding:48px 56px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;margin-top:48px}
+.vc-title{font-family:var(--serif);font-size:clamp(24px,3vw,36px);font-weight:300;color:var(--cream);margin-bottom:8px}
+.vc-sub{font-size:14px;color:var(--stone)}
+.vc-btn{font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:16px 36px;background:var(--gold);color:var(--ink);border:none;cursor:pointer;font-family:var(--sans);font-weight:500;text-decoration:none;white-space:nowrap;transition:all .2s}
+.vc-btn:hover{background:var(--gold-l)}
+
+@media(max-width:900px){
+  nav{padding:16px 20px}
+  .page-hero,.sec{padding:48px 20px 0}
+  .vert-tabs{flex-direction:column}
+  .stat-grid,.three-col,.bench-grid,.legal-steps,.boat-features,.dest-grid{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr}
+  .vert-cta{grid-template-columns:1fr;gap:24px}
+  .risk-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Fra<span>c</span>tal</a>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showVert('invest')">Fractal Invest</button>
+    <button class="nav-tab" onclick="showVert('nautico')">Fractal Náutico</button>
+    <button class="nav-tab" onclick="showVert('cars')">Fractal Premium Cars</button>
+  </div>
+  <a href="exchange.html" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;padding:8px 16px;border:1px solid rgba(184,147,90,.3)">Exchange →</a>
+  <a href="index.html" class="nav-back">← Volver al inicio</a>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="ph-tag">Verticales de negocio</div>
+  <h1 class="ph-title">Más allá del<br><em>segundo hogar.</em></h1>
+  <p class="ph-sub">Fractal tiene tres formas de generar valor. La copropiedad clásica para disfrutar. Fractal Invest para quien quiere flujo. Fractal Náutico para quienes el agua es su destino.</p>
+</div>
+
+<!-- VERTICAL TABS -->
+<div class="vert-tabs">
+  <div class="vert-tab active" onclick="showVert('invest')">
+    <div class="vt-num">01</div>
+    <div class="vt-name">Fractal Invest</div>
+    <div class="vt-title">Renta vacacional estructurada</div>
+    <div class="vt-tag">100% renta</div>
+  </div>
+  <div class="vert-tab" onclick="showVert('nautico')">
+    <div class="vt-num">02</div>
+    <div class="vt-name">Fractal Náutico</div>
+    <div class="vt-title">Copropiedad de embarcaciones</div>
+    <div class="vt-tag">lifestyle náutico</div>
+  </div>
+  <div class="vert-tab" onclick="showVert('cars')">
+    <div class="vt-num">03</div>
+    <div class="vt-name">Fractal Premium Cars</div>
+    <div class="vt-title">Copropiedad de autos de lujo</div>
+    <div class="vt-tag">lifestyle premium</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- FRACTAL INVEST -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div id="panel-invest" class="vert-content active">
+
+  <!-- INTRO -->
+  <div class="sec" style="background:#09090a;padding-bottom:0">
+    <div class="sec-inner">
+      <div class="two-col">
+        <div>
+          <div class="sec-tag">Fractal Invest</div>
+          <h2 class="sec-h2">Tu capital trabaja.<br>Tú no tienes que hacer nada.</h2>
+          <p class="sec-p">Fractal Invest es la vertical de renta pura. Compras una participación en una propiedad premium 100% operada para alquiler vacacional en plataformas. Recibes flujo mensual proporcional a tu participación. Fractal opera todo.</p>
+          <p class="sec-p" style="margin-top:16px">No es un fondo. No es un CDT. Es un activo inmobiliario real con escritura, que genera ingresos como Airbnb, con la estructura legal de un fondo de capital privado.</p>
+        </div>
+        <div>
+          <div class="stat-grid" style="margin:0">
+            <div class="stat-box"><div class="stat-num" style="font-size:clamp(20px,2.5vw,32px)">12%–14%</div><div class="stat-label">Retorno anual proyectado<br>primeros 5 años</div></div>
+            <div class="stat-box"><div class="stat-num" style="font-size:clamp(20px,2.5vw,32px)">+8%</div><div class="stat-label">Valorización anual<br>estimada del activo</div></div>
+            <div class="stat-box"><div class="stat-num" style="font-size:clamp(20px,2.5vw,32px)">Mensual</div><div class="stat-label">Distribución de<br>utilidades</div></div>
+            <div class="stat-box"><div class="stat-num" style="font-size:clamp(20px,2.5vw,32px)">1/8</div><div class="stat-label">Participación<br>mínima</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- VS CDT -->
+  <div class="sec" style="background:#09090a;padding-top:48px;padding-bottom:48px">
+    <div class="sec-inner">
+      <div class="sec-tag">¿Por qué Fractal Invest y no un CDT?</div>
+      <h2 class="sec-h2">El CDT paga 11%.<br>Pero tu principal no crece.</h2>
+      <div class="bench-grid">
+        <div class="bench-item">
+          <div class="bench-name">CDT 12 meses</div>
+          <div class="bench-num">11%</div>
+          <div class="bench-sub">Sin valorización · Capital inmovilizado · Fogafín</div>
+        </div>
+        <div class="bench-item">
+          <div class="bench-name">Once 94 / JALO</div>
+          <div class="bench-num">8.6%</div>
+          <div class="bench-sub">Renta pura · Apartamento urbano · Sin valorización propia</div>
+        </div>
+        <div class="bench-item">
+          <div class="bench-name">Protti</div>
+          <div class="bench-num">13.6%–15.7%</div>
+          <div class="bench-sub">TIR a 5 años · Retail AAA · Contrato fijo 15 años</div>
+        </div>
+        <div class="bench-item highlight">
+          <div class="bench-name">Fractal Invest</div>
+          <div class="bench-num">13%–16%</div>
+          <div class="bench-sub">TIR a 5 años · Renta + valorización · Activo real turístico</div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:rgba(122,116,104,.45);margin-top:12px">* Fractal Invest supera el CDT en retorno total a 5 años. La renta en año 1 es inferior al CDT — el valor diferencial es la valorización del activo y el crecimiento de la renta en la medida que madura la operación.</p>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- PROYECCION FINANCIERA -->
+  <div class="sec" style="padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Proyección financiera</div>
+      <h2 class="sec-h2">Los números — escenario conservador</h2>
+      <p class="sec-p">Propiedad de $4.800M · 10 partícipes · Ticket de $480M cada uno · Cauca Viejo, Antioquia</p>
+
+      <table class="proy-table">
+        <thead>
+          <tr>
+            <th>Año</th>
+            <th>Ocupación</th>
+            <th>Ingreso bruto</th>
+            <th>Costos op.</th>
+            <th>Utilidad neta</th>
+            <th>Renta mensual / partícipe</th>
+            <th>Yield anual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Año 1 — Arranque</td>
+            <td class="muted">52%</td>
+            <td class="muted">$302.400.000</td>
+            <td class="muted">$189.888.000</td>
+            <td>$112.512.000</td>
+            <td class="gold-td">$938.000</td>
+            <td class="muted">2,3%</td>
+          </tr>
+          <tr>
+            <td>Año 2 — Crecimiento</td>
+            <td class="muted">63%</td>
+            <td class="muted">$400.750.000</td>
+            <td class="muted">$228.263.000</td>
+            <td>$172.487.000</td>
+            <td class="gold-td">$1.437.000</td>
+            <td class="muted">3,6%</td>
+          </tr>
+          <tr>
+            <td>Año 3 — Madurez</td>
+            <td class="muted">70%</td>
+            <td class="muted">$484.500.000</td>
+            <td class="muted">$261.575.000</td>
+            <td>$222.925.000</td>
+            <td class="gold-td">$1.858.000</td>
+            <td class="muted">4,6%</td>
+          </tr>
+          <tr>
+            <td>Año 4 — Estable</td>
+            <td class="muted">72%</td>
+            <td class="muted">$524.000.000</td>
+            <td class="muted">$279.400.000</td>
+            <td>$244.600.000</td>
+            <td class="gold-td">$2.038.000</td>
+            <td class="muted">5,1%</td>
+          </tr>
+          <tr>
+            <td>Año 5 — Consolidado</td>
+            <td class="muted">74%</td>
+            <td class="muted">$567.000.000</td>
+            <td class="muted">$298.450.000</td>
+            <td>$268.550.000</td>
+            <td class="gold-td">$2.238.000</td>
+            <td class="muted">5,6%</td>
+          </tr>
+          <tr class="total-row">
+            <td colspan="4">Rentas acumuladas 5 años / partícipe</td>
+            <td colspan="2" class="gold-td">$102.112.000</td>
+            <td></td>
+          </tr>
+          <tr class="total-row">
+            <td colspan="4">Valorización activo año 5 (@8%/año) / partícipe</td>
+            <td colspan="2" class="gold-td">$225.277.000</td>
+            <td></td>
+          </tr>
+          <tr class="total-row">
+            <td colspan="4"><strong>Retorno total sobre $480M · TIR estimada</strong></td>
+            <td colspan="2" class="gold-td" style="font-size:20px"><strong>~13%–15% anual</strong></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="legal-box">
+        <p>Las cifras son proyecciones elaboradas por Fractal basadas en supuestos de mercado (ocupación, tarifa promedio, costos operativos) y no constituyen garantía de resultados futuros. Los resultados reales pueden diferir debido a la estacionalidad, condiciones del mercado vacacional y variables operativas. La valorización es estimada mediante capitalización directa al 8% E.A. y no está garantizada. La rentabilidad por renta en año 1–2 es inferior a la de un CDT — el retorno total superior se materializa en el horizonte de 5 años incluyendo valorización. Toda vinculación se realiza bajo contrato de Cuentas en Participación (Art. 507–514 Código de Comercio de Colombia). No constituye oferta pública de valores.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- ESTRUCTURA LEGAL -->
+  <div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Estructura legal — inspirada en Protti</div>
+      <h2 class="sec-h2">La misma arquitectura de los mejores<br>fondos inmobiliarios privados de Colombia</h2>
+      <p class="sec-p" style="margin-bottom:40px">Protti usa esta estructura para levantar $42.000M en 9 proyectos con +1.000 partícipes. Fractal Invest adopta el mismo marco legal, adaptado a activos turísticos.</p>
+
+      <div class="legal-steps">
+        <div class="ls-item">
+          <div class="ls-num">01</div>
+          <div class="ls-title">Activo identificado</div>
+          <div class="ls-desc">Fractal identifica, valora y adquiere la propiedad. Criterios: ubicación premium, destino con demanda comprobada, potencial de ocupación 60%+ año 3.</div>
+          <div class="ls-arrow">→</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-num">02</div>
+          <div class="ls-title">SAS por proyecto</div>
+          <div class="ls-desc">Se constituye una SAS independiente por cada propiedad (ej: "Fractal Cauca Viejo SAS"). Fractal actúa como gestor operador.</div>
+          <div class="ls-arrow">→</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-num">03</div>
+          <div class="ls-title">Contrato cuentas en participación</div>
+          <div class="ls-desc">Art. 507–514 C.Co. Fractal = gestor. Partícipes = no gestores. Distribución de utilidades y pérdidas proporcional. Contabilidad separada. Sin oferta pública de valores.</div>
+          <div class="ls-arrow">→</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-num">04</div>
+          <div class="ls-title">Distribución mensual</div>
+          <div class="ls-desc">Utilidades distribuidas mensualmente vía transferencia. Impuestos independientes por partícipe. Cláusulas de salida. Mercado secundario facilitado por Fractal.</div>
+        </div>
+      </div>
+
+      <div class="two-col" style="margin-top:40px">
+        <div>
+          <h4 style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);margin-bottom:16px">Lo que protege al partícipe</h4>
+          <div class="row-table">
+            <div class="rt-row"><span class="rt-label">Contabilidad separada por proyecto</span><span class="rt-val gold">✓</span></div>
+            <div class="rt-row"><span class="rt-label">Impuestos independientes por partícipe</span><span class="rt-val gold">✓</span></div>
+            <div class="rt-row"><span class="rt-label">Informe mensual de operación</span><span class="rt-val gold">✓</span></div>
+            <div class="rt-row"><span class="rt-label">Cláusulas de salida definidas</span><span class="rt-val gold">✓</span></div>
+            <div class="rt-row"><span class="rt-label">Sin permanencia obligatoria después año 1</span><span class="rt-val gold">✓</span></div>
+            <div class="rt-row"><span class="rt-label">Mercado secundario facilitado por Fractal</span><span class="rt-val gold">✓</span></div>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);margin-bottom:16px">Cómo opera Fractal</h4>
+          <div class="row-table">
+            <div class="rt-row"><span class="rt-label">Fractal cobra sobre ingreso bruto</span><span class="rt-val">20%</span></div>
+            <div class="rt-row"><span class="rt-label">OTAs (Airbnb/Booking)</span><span class="rt-val">15%</span></div>
+            <div class="rt-row"><span class="rt-label">Costos operativos fijos</span><span class="rt-val">~$84M/año</span></div>
+            <div class="rt-row"><span class="rt-label">Fondo de reposición del activo</span><span class="rt-val">5% ingresos</span></div>
+            <div class="rt-row"><span class="rt-label">Utilidad neta → partícipes</span><span class="rt-val gold">100%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- RIESGOS -->
+  <div class="sec" style="padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Riesgos y cómo los manejamos</div>
+      <h2 class="sec-h2">Honestidad sobre lo que puede pasar</h2>
+      <div class="risk-grid">
+        <div class="risk-item">
+          <div class="risk-name">Vacancia y estacionalidad</div>
+          <div class="risk-desc">Un destino vacacional tiene picos en diciembre y Semana Santa y valles en febrero y octubre. La ocupación no es constante como un arriendo comercial.</div>
+          <div class="risk-sol">→ Pricing dinámico (PriceLabs), canal directo propio, diversificación de destinos en el portafolio.</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-name">Renta año 1–2 inferior al CDT</div>
+          <div class="risk-desc">En los primeros dos años la renta mensual es menor que un CDT. El retorno total a 5 años supera el CDT solo cuando se incluye valorización.</div>
+          <div class="risk-sol">→ Fractal Invest es un instrumento de horizonte 5 años. No es para capital que necesites en 12 meses.</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-name">Regulación de alquileres cortos</div>
+          <div class="risk-desc">Las regulaciones de STR (Short-Term Rentals) están creciendo en Colombia. Algunas zonas pueden restringir operación en plataformas.</div>
+          <div class="risk-sol">→ Selección de propiedades en zonas sin restricción actual. Seguimiento regulatorio permanente.</div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-name">Liquidez limitada</div>
+          <div class="risk-desc">No es un CDT que se retira al vencimiento. La salida requiere encontrar un comprador para tu participación en el mercado secundario.</div>
+          <div class="risk-sol">→ Fractal facilita el mercado secundario entre partícipes y nuevos inversionistas. Sin permanencia obligatoria post año 1.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="sec" style="padding-top:0">
+    <div class="sec-inner">
+      <div class="vert-cta">
+        <div>
+          <div class="vc-title">¿Quieres que tu capital trabaje<br>mientras la propiedad se valoriza?</div>
+          <div class="vc-sub">Las participaciones de Fractal Invest son limitadas por proyecto. Cuéntanos tu ticket objetivo y te enviamos el modelo financiero completo.</div>
+        </div>
+        <a href="index.html#contacto" class="vc-btn">Hablar con un asesor →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /FRACTAL INVEST -->
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- FRACTAL NÁUTICO -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div id="panel-nautico" class="vert-content">
+
+  <!-- INTRO -->
+  <div class="sec" style="background:#09090a;padding-bottom:0">
+    <div class="sec-inner">
+      <div class="two-col">
+        <div>
+          <div class="sec-tag">Fractal Náutico</div>
+          <h2 class="sec-h2">La embarcación de tus sueños.<br><em>A una fracción del precio.</em></h2>
+          <p class="sec-p">Tener un bote o lancha propio cuesta entre $800M y $3.000M, más $120M–$300M anuales en mantenimiento, marinero, seguro, varadero y reparaciones. Y lo usas 15 días al año.</p>
+          <p class="sec-p" style="margin-top:16px">Con Fractal Náutico compras 1/8 a 4/8 de una embarcación premium. Pagas la proporción exacta de los costos. Usas 44+ días al año. Y Fractal se encarga de absolutamente todo.</p>
+        </div>
+        <div>
+          <div class="stat-grid" style="margin:0">
+            <div class="stat-box"><div class="stat-num">1/8</div><div class="stat-label">Participación mínima</div></div>
+            <div class="stat-box"><div class="stat-num">44+</div><div class="stat-label">Días de uso al año por participación</div></div>
+            <div class="stat-box"><div class="stat-num">8×</div><div class="stat-label">Menos costo de entrada vs bote propio</div></div>
+            <div class="stat-box"><div class="stat-num">$0</div><div class="stat-label">Preocupaciones de mantenimiento</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- VS BOTE PROPIO -->
+  <div class="sec" style="background:#09090a;padding-top:48px;padding-bottom:48px">
+    <div class="sec-inner">
+      <div class="sec-tag">Fractal Náutico vs bote propio</div>
+      <h2 class="sec-h2">Lo que nadie te dice<br>cuando compras un bote.</h2>
+      <div class="two-col">
+        <div>
+          <div class="row-table">
+            <div class="rt-row"><span class="rt-label" style="font-weight:500;color:var(--cream)">BOTE PROPIO — lancha 30 pies</span><span></span></div>
+            <div class="rt-row"><span class="rt-label">Precio de compra</span><span class="rt-val red">$1.200.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Marinero/skipper (mes)</span><span class="rt-val red">$3.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Varadero y mantenimiento</span><span class="rt-val red">$4.000.000/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Seguro anual</span><span class="rt-val red">$18.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Combustible y operación</span><span class="rt-val red">Variable</span></div>
+            <div class="rt-row total"><span class="rt-label">Costo anual fijo sin usar</span><span class="rt-val red">~$102.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Días de uso promedio/año</span><span class="rt-val red">~15 días</span></div>
+            <div class="rt-row"><span class="rt-label">Costo real por día de uso</span><span class="rt-val red">$6.800.000</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="row-table">
+            <div class="rt-row"><span class="rt-label" style="font-weight:500;color:var(--cream)">FRACTAL NÁUTICO — misma lancha</span><span></span></div>
+            <div class="rt-row"><span class="rt-label">Participación 1/8</span><span class="rt-val gold">$150.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Cuota mensual (1/8 de costos)</span><span class="rt-val gold">$875.000</span></div>
+            <div class="rt-row"><span class="rt-label">Seguro (proporcional)</span><span class="rt-val gold">Incluido</span></div>
+            <div class="rt-row"><span class="rt-label">Mantenimiento</span><span class="rt-val gold">Fractal lo gestiona</span></div>
+            <div class="rt-row"><span class="rt-label">Combustible por uso</span><span class="rt-val gold">Solo cuando usas</span></div>
+            <div class="rt-row total"><span class="rt-label">Costo anual fijo</span><span class="rt-val gold">~$10.500.000</span></div>
+            <div class="rt-row"><span class="rt-label">Días disponibles/año</span><span class="rt-val gold">44+ días</span></div>
+            <div class="rt-row"><span class="rt-label">Costo real por día de uso</span><span class="rt-val gold">~$239.000</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- TIPOS -->
+  <div class="sec" style="padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Tipos de embarcación</div>
+      <h2 class="sec-h2">Elige la experiencia<br>que se ajusta a tu ritmo.</h2>
+      <div class="three-col">
+        <div class="col-card">
+          <div class="col-num">01</div>
+          <h4>Lancha familiar</h4>
+          <p>25–30 pies. Perfecta para embalses y ríos. Guatapé, Tominé, Calima. Capacidad 10–12 personas. Ideal para fines de semana con familia.</p>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(122,116,104,.1)">
+            <div style="font-size:11px;color:var(--stone)">Ticket 1/8 desde</div>
+            <div style="font-family:var(--serif);font-size:24px;color:var(--gold);font-weight:300">$120M–$180M</div>
+          </div>
+        </div>
+        <div class="col-card">
+          <div class="col-num">02</div>
+          <h4>Velero o catamarán</h4>
+          <p>38–48 pies. Cartagena, San Andrés, Islas del Rosario. Experiencia de navegación completa. Capacidad 8–10 personas. Para los que quieren el mar.</p>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(122,116,104,.1)">
+            <div style="font-size:11px;color:var(--stone)">Ticket 1/8 desde</div>
+            <div style="font-family:var(--serif);font-size:24px;color:var(--gold);font-weight:300">$250M–$400M</div>
+          </div>
+        </div>
+        <div class="col-card">
+          <div class="col-num">03</div>
+          <h4>Yate de lujo</h4>
+          <p>50+ pies. Caribe colombiano y panameño. Cabinas privadas, cocina completa, jacuzzi. La experiencia náutica más exclusiva del portafolio Fractal.</p>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(122,116,104,.1)">
+            <div style="font-size:11px;color:var(--stone)">Ticket 1/8 desde</div>
+            <div style="font-family:var(--serif);font-size:24px;color:var(--gold);font-weight:300">$500M–$900M</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- DESTINOS -->
+  <div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Destinos náuticos</div>
+      <h2 class="sec-h2">El agua de Colombia<br>como nunca la has vivido.</h2>
+      <div class="dest-grid">
+        <div class="dest-item"><div class="dest-name">Guatapé</div><div class="dest-sub">Embalse · Lancha familiar</div></div>
+        <div class="dest-item"><div class="dest-name">Cartagena</div><div class="dest-sub">Caribe · Velero · Islas</div></div>
+        <div class="dest-item"><div class="dest-name">San Andrés</div><div class="dest-sub">Mar de 7 colores · Buceo</div></div>
+        <div class="dest-item"><div class="dest-name">Tominé</div><div class="dest-sub">Embalse · Sabana · Familia</div></div>
+        <div class="dest-item"><div class="dest-name">Calima</div><div class="dest-sub">Valle del Cauca · Vela</div></div>
+        <div class="dest-item"><div class="dest-name">Lago Calima</div><div class="dest-sub">Windsurf · Deportivo</div></div>
+        <div class="dest-item"><div class="dest-name">Islas del Rosario</div><div class="dest-sub">Caribe · Snorkel · Coral</div></div>
+        <div class="dest-item"><div class="dest-name">Río Magdalena</div><div class="dest-sub">Honda · Experiencia fluvial</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- CÓMO FUNCIONA -->
+  <div class="sec" style="padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Cómo funciona</div>
+      <h2 class="sec-h2">Simple, flexible, sin dolores de cabeza.</h2>
+      <div class="boat-features">
+        <div class="bf-item">
+          <div class="bf-icon">⚓</div>
+          <div class="bf-title">Compras tu participación</div>
+          <div class="bf-desc">1/8 a 4/8 de la embarcación. Estructura legal como accionista en SAS. Escritura de participación a tu nombre.</div>
+        </div>
+        <div class="bf-item">
+          <div class="bf-icon">📱</div>
+          <div class="bf-title">Reservas por APP Fractal</div>
+          <div class="bf-desc">Agenda tus días de uso con hasta 24 meses de anticipación. Sin límite en número de reservas. Cancela o modifica cuando quieras.</div>
+        </div>
+        <div class="bf-item">
+          <div class="bf-icon">🧑‍✈️</div>
+          <div class="bf-title">Marinero y operación incluidos</div>
+          <div class="bf-desc">Fractal gestiona al marinero, el mantenimiento, el varadero, los seguros y la certificación. Llegas y disfrutas.</div>
+        </div>
+        <div class="bf-item">
+          <div class="bf-icon">💳</div>
+          <div class="bf-title">Cuota mensual proporcional</div>
+          <div class="bf-desc">Solo pagas tu % de los costos fijos. Si tienes 1/8, pagas 1/8 del mantenimiento. Sin sorpresas ni costos ocultos.</div>
+        </div>
+        <div class="bf-item">
+          <div class="bf-icon">📈</div>
+          <div class="bf-title">Tu participación se puede vender</div>
+          <div class="bf-desc">Fractal facilita el mercado secundario. Vende tu participación cuando quieras al precio que estimes conveniente.</div>
+        </div>
+        <div class="bf-item">
+          <div class="bf-icon">🔒</div>
+          <div class="bf-title">Estructura legal robusta</div>
+          <div class="bf-desc">Accionista en SAS independiente por embarcación. Igual protección legal que cualquier accionista de empresa colombiana.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="sec" style="padding-top:0">
+    <div class="sec-inner">
+      <div class="vert-cta">
+        <div>
+          <div class="vc-title">¿Cuál es tu embarcación<br>y en qué destino?</div>
+          <div class="vc-sub">Fractal Náutico está en desarrollo. Regístrate y sé el primero en conocer los proyectos disponibles cuando lancemos.</div>
+        </div>
+        <a href="index.html#contacto" class="vc-btn">Registrar interés →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /FRACTAL NÁUTICO -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- FRACTAL PREMIUM CARS -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div id="panel-cars" class="vert-content">
+
+  <!-- INTRO -->
+  <div class="sec" style="background:#09090a;padding-bottom:0">
+    <div class="sec-inner">
+      <div class="two-col">
+        <div>
+          <div class="sec-tag">Fractal Premium Cars</div>
+          <h2 class="sec-h2">El carro de tus sueños.<br><em>Sin pagar el precio completo.</em></h2>
+          <p class="sec-p">Un Porsche 911 cuesta $600M. Un Ferrari Roma supera $1.200M. Un Lamborghini Urus $900M. Y lo usas, en promedio, 20 días al año. El 94% del tiempo está en el garaje depreciándose.</p>
+          <p class="sec-p" style="margin-top:16px">Con Fractal Premium Cars compras 1/8 a 4/8 de un auto de lujo. Pagas tu porción exacta de costos. Tienes 44+ días de uso al año. Fractal gestiona seguro, mantenimiento, revisiones y logística.</p>
+        </div>
+        <div>
+          <div class="stat-grid" style="margin:0">
+            <div class="stat-box"><div class="stat-num">1/8</div><div class="stat-label">Participación mínima</div></div>
+            <div class="stat-box"><div class="stat-num">44+</div><div class="stat-label">Días de uso al año por participación</div></div>
+            <div class="stat-box"><div class="stat-num">8×</div><div class="stat-label">Menos costo de entrada vs auto propio</div></div>
+            <div class="stat-box"><div class="stat-num">$0</div><div class="stat-label">Preocupaciones de mantenimiento</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- VS AUTO PROPIO -->
+  <div class="sec" style="background:#09090a;padding-top:48px;padding-bottom:48px">
+    <div class="sec-inner">
+      <div class="sec-tag">Fractal Premium Cars vs auto propio</div>
+      <h2 class="sec-h2">Lo que nadie te dice<br>cuando compras un Ferrari.</h2>
+      <div class="two-col">
+        <div>
+          <div class="row-table">
+            <div class="rt-row"><span class="rt-label" style="font-weight:500;color:var(--cream)">AUTO PROPIO — Porsche 911 Carrera</span><span></span></div>
+            <div class="rt-row"><span class="rt-label">Precio de compra</span><span class="rt-val red">$620.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Seguro anual (2–3%)</span><span class="rt-val red">$15.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Mantenimiento anual</span><span class="rt-val red">$12.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Impuestos y rodamiento</span><span class="rt-val red">$8.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Depreciación año 1 (~12%)</span><span class="rt-val red">$74.400.000</span></div>
+            <div class="rt-row total"><span class="rt-label">Costo real año 1</span><span class="rt-val red">~$109.400.000</span></div>
+            <div class="rt-row"><span class="rt-label">Días de uso promedio/año</span><span class="rt-val red">~20 días</span></div>
+            <div class="rt-row"><span class="rt-label">Costo real por día de uso</span><span class="rt-val red">$5.470.000</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="row-table">
+            <div class="rt-row"><span class="rt-label" style="font-weight:500;color:var(--cream)">FRACTAL PREMIUM CARS — mismo Porsche · 1/8</span><span></span></div>
+            <div class="rt-row"><span class="rt-label">Participación 1/8 (precio entrada)</span><span class="rt-val gold">$77.500.000</span></div>
+            <div class="rt-row"><span class="rt-label">Seguro todo riesgo (1/8)</span><span class="rt-val gold">$1.612.500/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Parqueadero cubierto premium (1/8)</span><span class="rt-val gold">$250.000/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Lavada premium 2×/semana (1/8)</span><span class="rt-val gold">$240.000/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Chofer de planta + prestaciones (1/8)</span><span class="rt-val gold">$525.000/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Uber logístico entrega + recogida (1/8)</span><span class="rt-val gold">$62.500/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Mantenimiento + repuestos (1/8)</span><span class="rt-val gold">$187.500/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Combustible + SOAT + rodamiento (1/8)</span><span class="rt-val gold">$143.750/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Fondo contingencias + fee Fractal (1/8)</span><span class="rt-val gold">$250.000/mes</span></div>
+            <div class="rt-row total"><span class="rt-label">Cuota mensual total por 1/8</span><span class="rt-val gold">$3.608.750/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Días disponibles/año (44+ días)</span><span class="rt-val gold">44+ días</span></div>
+            <div class="rt-row"><span class="rt-label">Costo real por día de uso</span><span class="rt-val gold">~$392.000/día</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- PORTAFOLIO DE MARCAS -->
+  <div class="sec" style="padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Portafolio de marcas</div>
+      <h2 class="sec-h2">Las marcas más deseadas<br>del mundo. Ahora al alcance.</h2>
+      <div class="three-col">
+
+        <div class="col-card">
+          <div class="col-num">01</div>
+          <h4>Porsche</h4>
+          <p>911 Carrera, Cayenne, Panamera, Taycan. El equilibrio perfecto entre desempeño diario y emoción. El más versátil del portafolio.</p>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(122,116,104,.1)">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Modelos disponibles</div>
+            <div style="font-size:12px;color:rgba(245,240,232,.6);line-height:1.8">911 Carrera · Cayenne GTS<br>Panamera 4S · Taycan</div>
+            <div style="margin-top:10px;font-size:11px;color:var(--stone)">Ticket 1/8 desde</div>
+            <div style="font-family:var(--serif);font-size:24px;color:var(--gold);font-weight:300">$75M–$125M</div>
+          </div>
+        </div>
+
+        <div class="col-card">
+          <div class="col-num">02</div>
+          <h4>Ferrari</h4>
+          <p>Roma, Portofino M, SF90 Stradale. Conducción pura. Para ocasiones especiales donde la experiencia lo es todo. El pináculo del portafolio.</p>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(122,116,104,.1)">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Modelos disponibles</div>
+            <div style="font-size:12px;color:rgba(245,240,232,.6);line-height:1.8">Roma · Portofino M<br>SF90 Stradale · 296 GTB</div>
+            <div style="margin-top:10px;font-size:11px;color:var(--stone)">Ticket 1/8 desde</div>
+            <div style="font-family:var(--serif);font-size:24px;color:var(--gold);font-weight:300">$150M–$300M</div>
+          </div>
+        </div>
+
+        <div class="col-card">
+          <div class="col-num">03</div>
+          <h4>Lamborghini</h4>
+          <p>Urus, Huracán. Presencia total. El SUV deportivo más deseado del mundo y el superdeportivo más reconocible. Garantía de atención.</p>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(122,116,104,.1)">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Modelos disponibles</div>
+            <div style="font-size:12px;color:rgba(245,240,232,.6);line-height:1.8">Urus · Urus Performante<br>Huracán EVO · Revuelto</div>
+            <div style="margin-top:10px;font-size:11px;color:var(--stone)">Ticket 1/8 desde</div>
+            <div style="font-family:var(--serif);font-size:24px;color:var(--gold);font-weight:300">$115M–$250M</div>
+          </div>
+        </div>
+
+        <div class="col-card">
+          <div class="col-num">04</div>
+          <h4>Bentley</h4>
+          <p>Continental GT, Bentayga. Lujo británico sin compromiso. El auto de la persona que llegó. Materiales, acabados y presencia sin igual en Colombia.</p>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(122,116,104,.1)">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Modelos disponibles</div>
+            <div style="font-size:12px;color:rgba(245,240,232,.6);line-height:1.8">Continental GT · GTC<br>Bentayga · Flying Spur</div>
+            <div style="margin-top:10px;font-size:11px;color:var(--stone)">Ticket 1/8 desde</div>
+            <div style="font-family:var(--serif);font-size:24px;color:var(--gold);font-weight:300">$125M–$200M</div>
+          </div>
+        </div>
+
+        <div class="col-card">
+          <div class="col-num">05</div>
+          <h4>Lexus</h4>
+          <p>LC 500, LX 600, LS 500. La alternativa premium japonesa. Fiabilidad excepcional, tecnología de punta y lujo sin la volatilidad de las marcas europeas.</p>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(122,116,104,.1)">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Modelos disponibles</div>
+            <div style="font-size:12px;color:rgba(245,240,232,.6);line-height:1.8">LC 500 · LX 600<br>LS 500 · RX 500h</div>
+            <div style="margin-top:10px;font-size:11px;color:var(--stone)">Ticket 1/8 desde</div>
+            <div style="font-family:var(--serif);font-size:24px;color:var(--gold);font-weight:300">$55M–$110M</div>
+          </div>
+        </div>
+
+        <div class="col-card">
+          <div class="col-num">06</div>
+          <h4>Range Rover</h4>
+          <p>Range Rover Autobiography, Sport SVR. El todoterreno de lujo definitivo. Perfecto para Colombia — ciudad, carretera y destinos como Cauca Viejo o Guatapé.</p>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(122,116,104,.1)">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Modelos disponibles</div>
+            <div style="font-size:12px;color:rgba(245,240,232,.6);line-height:1.8">Autobiography · Sport SVR<br>Defender V8 · Velar R-Dynamic</div>
+            <div style="margin-top:10px;font-size:11px;color:var(--stone)">Ticket 1/8 desde</div>
+            <div style="font-family:var(--serif);font-size:24px;color:var(--gold);font-weight:300">$65M–$130M</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- COMO FUNCIONA -->
+  <div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Cómo funciona</div>
+      <h2 class="sec-h2">Tan simple como reservar<br>un vuelo desde la app.</h2>
+      <div class="boat-features">
+        <div class="bf-item">
+          <div class="bf-icon">🚗</div>
+          <div class="bf-title">Eliges tu auto y participación</div>
+          <div class="bf-desc">De 1/8 a 4/8 del vehículo. Estructura legal como accionista en SAS independiente por cada auto. Escritura de participación a tu nombre.</div>
+        </div>
+        <div class="bf-item">
+          <div class="bf-icon">📱</div>
+          <div class="bf-title">Reservas por APP Fractal</div>
+          <div class="bf-desc">Agenda tus días con hasta 6 meses de anticipación. El auto llega a donde estés con conductor de cortesía para entrega y devolución.</div>
+        </div>
+        <div class="bf-item">
+          <div class="bf-icon">🔧</div>
+          <div class="bf-title">Mantenimiento gestionado</div>
+          <div class="bf-desc">Fractal coordina revisiones, cambios de aceite, llantas, seguros y cualquier eventualidad. Solo talleres oficiales de marca. Tú nunca llevas el carro a ningún lado.</div>
+        </div>
+        <div class="bf-item">
+          <div class="bf-icon">💰</div>
+          <div class="bf-title">Cuota mensual proporcional</div>
+          <div class="bf-desc">Solo pagas tu % de los costos fijos mensuales. Seguro, mantenimiento preventivo, impuestos y almacenamiento. Sin sorpresas.</div>
+        </div>
+        <div class="bf-item">
+          <div class="bf-icon">🔄</div>
+          <div class="bf-title">Rota entre modelos</div>
+          <div class="bf-desc">Con Fractal Premium Cars puedes acceder a otros vehículos del portafolio en fechas disponibles — sujeto a disponibilidad entre partícipes.</div>
+        </div>
+        <div class="bf-item">
+          <div class="bf-icon">📈</div>
+          <div class="bf-title">Vende cuando quieras</div>
+          <div class="bf-desc">Fractal facilita el mercado secundario entre partícipes. Sin permanencia obligatoria. Los autos de colección tienden a mantener o aumentar su valor.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- ESTRUCTURA LEGAL -->
+  <div class="sec" style="padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Estructura legal y operativa</div>
+      <h2 class="sec-h2">La misma solidez legal<br>de Fractal Homes.</h2>
+      <div class="two-col">
+        <div>
+          <div class="row-table">
+            <div class="rt-row"><span class="rt-label" style="font-weight:500;color:var(--cream)">Estructura de propiedad</span><span></span></div>
+            <div class="rt-row"><span class="rt-label">Vehículo legal</span><span class="rt-val gold">SAS por vehículo</span></div>
+            <div class="rt-row"><span class="rt-label">Participación mínima</span><span class="rt-val">1/8 (12.5%)</span></div>
+            <div class="rt-row"><span class="rt-label">Participación máxima</span><span class="rt-val">4/8 (50%)</span></div>
+            <div class="rt-row"><span class="rt-label">Número de partícipes</span><span class="rt-val">4 a 8 por vehículo</span></div>
+            <div class="rt-row"><span class="rt-label">Título de propiedad</span><span class="rt-val gold">Acción a tu nombre</span></div>
+            <div class="rt-row"><span class="rt-label">Mercado secundario</span><span class="rt-val gold">Facilitado por Fractal</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="row-table">
+            <div class="rt-row"><span class="rt-label" style="font-weight:500;color:var(--cream)">Desglose completo cuota mensual 1/8 — Porsche 911</span><span></span></div>
+            <div class="rt-row"><span class="rt-label">Seguro todo riesgo (2.5% activo ÷ 12 ÷ 8)</span><span class="rt-val">$1.612.500</span></div>
+            <div class="rt-row"><span class="rt-label">Chofer de planta + prestaciones (÷ 8)</span><span class="rt-val">$525.000</span></div>
+            <div class="rt-row"><span class="rt-label">Uber logístico entrega + recogida (÷ 8)</span><span class="rt-val">$62.500</span></div>
+            <div class="rt-row"><span class="rt-label">Parqueadero cubierto premium (÷ 8)</span><span class="rt-val">$250.000</span></div>
+            <div class="rt-row"><span class="rt-label">Lavada premium 2× semana, a mano (÷ 8)</span><span class="rt-val">$240.000</span></div>
+            <div class="rt-row"><span class="rt-label">Mantenimiento preventivo (÷ 8)</span><span class="rt-val">$187.500</span></div>
+            <div class="rt-row"><span class="rt-label">Fondo contingencias + fee Fractal (÷ 8)</span><span class="rt-val">$300.000</span></div>
+            <div class="rt-row"><span class="rt-label">Combustible + SOAT + rodamiento (÷ 8)</span><span class="rt-val">$143.750</span></div>
+            <div class="rt-row total"><span class="rt-label">Total cuota mensual por 1/8</span><span class="rt-val gold">$3.321.250/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Costo por día de uso (44 días/8 partic.)</span><span class="rt-val gold">~$361.000/día</span></div>
+            <div class="rt-row"><span class="rt-label">vs alquiler superdeportivo en el mercado</span><span class="rt-val" style="color:rgba(200,80,80,.8)">$2.500.000–$5.000.000/día</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCIA PREMIUM -->
+  <div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">La experiencia completa</div>
+      <h2 class="sec-h2">No es alquilar un carro.<br><em>Es vivir el carro.</em></h2>
+      <p class="sec-p" style="margin-bottom:32px">La diferencia entre Fractal Premium Cars y cualquier servicio de renta de lujo es que aquí eres dueño. El auto siempre está perfecto porque es tuyo. El chofer te conoce porque siempre es el mismo. La experiencia se diseña para ti.</p>
+
+      <div class="three-col">
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🚿</div>
+          <h4>Lavada premium 2× por semana</h4>
+          <p>Lavado a mano con productos de línea premium (Meguiar's, Chemical Guys). Sin túneles automáticos. Sin esponjas. Siempre con microfibra de alta densidad. El auto nunca luce descuidado.</p>
+        </div>
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🏢</div>
+          <h4>Parqueadero cubierto 24/7</h4>
+          <p>Espacio exclusivo en parqueadero premium — El Poblado, Chicó o Zona Rosa según el destino. Cámaras, control de acceso, temperatura regulada. El auto nunca está en la calle.</p>
+        </div>
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🧑‍✈️</div>
+          <h4>Chofer de planta uniformado</h4>
+          <p>Un conductor profesional asignado al vehículo, uniformado, con capacitación en protocolo de atención premium. No es un Uber — es tu chofer. Siempre el mismo para que te conozca.</p>
+        </div>
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🚘</div>
+          <h4>Logística inteligente con Uber</h4>
+          <p>El chofer lleva el auto hasta ti. Si no quieres conductor, el chofer sale en Uber — sin costo extra para ti. Al terminar tus días, el chofer va en Uber a recoger el auto. Sin empleados adicionales, sin complicaciones.</p>
+        </div>
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">✨</div>
+          <h4>Detailing mensual completo</h4>
+          <p>Una vez al mes: pulida de pintura, aplicación de cera carnauba, ozono interior, tratamiento de cueros y plásticos. El auto no solo está limpio — está en condición de showroom.</p>
+        </div>
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🎁</div>
+          <h4>Kit de bienvenida en cada uso</h4>
+          <p>Cada vez que tomas el auto: agua premium en los porta-vasos, fragancia de lujo activa en el habitáculo, tarjeta personalizada con tu nombre y ruta sugerida curada por Fractal.</p>
+        </div>
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🛡️</div>
+          <h4>Solo talleres oficiales de marca</h4>
+          <p>Ningún multimarca. Ningún mecánico de confianza. Cada revisión en concesionario oficial certificado. Recibes reporte digital con fotos después de cada servicio. Transparencia total.</p>
+        </div>
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🔄</div>
+          <h4>Sustituto premium garantizado</h4>
+          <p>Si tu auto está en mantenimiento durante tus días asignados, Fractal garantiza un vehículo sustituto de igual o mayor categoría. Nunca perderás un día por causas operativas.</p>
+        </div>
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">📍</div>
+          <h4>Entrega donde estés</h4>
+          <p>El auto llega a tu casa, tu oficina, el aeropuerto o el restaurante. La devolución igual. No vas a buscar el carro — el carro va donde estás tú. En Medellín, Bogotá y Cartagena.</p>
+        </div>
+      </div>
+
+      <!-- TABLA COMPARATIVA POR MARCA -->
+      <h3 style="font-family:var(--serif);font-size:28px;font-weight:300;color:var(--cream);margin-top:56px;margin-bottom:8px">Cuota mensual real por vehículo y participación</h3>
+      <p style="font-size:13px;color:var(--stone);margin-bottom:0">Incluye todos los costos: seguro, chofer, Uber logístico, parqueadero, lavada, mantenimiento y fee Fractal.</p>
+      <table class="proy-table" style="margin-top:20px">
+        <thead>
+          <tr>
+            <th>Vehículo</th>
+            <th>Activo</th>
+            <th>Cuota total/mes</th>
+            <th>Cuota 1/8 mes</th>
+            <th>Cuota 1/4 mes</th>
+            <th>$/día uso (1/8)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lexus LC 500</td>
+            <td class="muted">$550M</td>
+            <td class="muted">$16.978.333</td>
+            <td class="gold-td">$1.984.792</td>
+            <td class="muted">$3.969.583</td>
+            <td class="gold-td">$360.871</td>
+          </tr>
+          <tr>
+            <td>Range Rover Autobiography</td>
+            <td class="muted">$700M</td>
+            <td class="muted">$17.428.333</td>
+            <td class="gold-td">$2.040.042</td>
+            <td class="muted">$4.080.083</td>
+            <td class="gold-td">$371.098</td>
+          </tr>
+          <tr>
+            <td>Porsche 911 Carrera</td>
+            <td class="muted">$620M</td>
+            <td class="muted">$17.261.667</td>
+            <td class="gold-td">$2.020.208</td>
+            <td class="muted">$4.040.417</td>
+            <td class="gold-td">$367.311</td>
+          </tr>
+          <tr>
+            <td>Lamborghini Urus</td>
+            <td class="muted">$900M</td>
+            <td class="muted">$18.070.000</td>
+            <td class="gold-td">$2.121.250</td>
+            <td class="muted">$4.242.500</td>
+            <td class="gold-td">$385.682</td>
+          </tr>
+          <tr>
+            <td>Bentley Continental GT</td>
+            <td class="muted">$900M</td>
+            <td class="muted">$18.070.000</td>
+            <td class="gold-td">$2.121.250</td>
+            <td class="muted">$4.242.500</td>
+            <td class="gold-td">$385.682</td>
+          </tr>
+          <tr>
+            <td>Ferrari Roma</td>
+            <td class="muted">$1.200M</td>
+            <td class="muted">$18.970.000</td>
+            <td class="gold-td">$2.233.750</td>
+            <td class="muted">$4.467.500</td>
+            <td class="gold-td">$406.136</td>
+          </tr>
+          <tr class="total-row">
+            <td colspan="5">Alquiler superdeportivo de lujo en el mercado (referencia)</td>
+            <td class="gold-td" style="color:rgba(200,80,80,.8)">$2.500.000–$5.000.000/día</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px;color:rgba(122,116,104,.35);margin-top:10px;line-height:1.5">Costos fijos incluidos: seguro todo riesgo 2.5–3% anual, chofer + prestaciones, Uber logístico para entrega y recogida, parqueadero cubierto premium, lavada a mano 2×/semana, mantenimiento preventivo, combustible operativo, SOAT, fondo de contingencias y fee Fractal. Valores estimados para Medellín y Bogotá — pueden variar según destino y condiciones del mercado.</p>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- CTA -->
+  <div class="sec" style="padding-top:0;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="vert-cta">
+        <div>
+          <div class="vc-title">¿Cuál es tu sueño sobre<br>cuatro ruedas?</div>
+          <div class="vc-sub">Fractal Premium Cars está en desarrollo. Regístrate con tu preferencia de marca y modelo — los primeros en registrar tienen prioridad de selección.</div>
+        </div>
+        <a href="index.html#contacto" class="vc-btn">Registrar interés →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /FRACTAL PREMIUM CARS -->
+
+<script>
+function showVert(id) {
+  document.querySelectorAll('.vert-content').forEach(function(p){ p.classList.remove('active'); });
+  var panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('active');
+  document.querySelectorAll('.vert-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.vert-tab').forEach(function(t){
+    if (t.onclick && t.onclick.toString().indexOf("'" + id + "'") > -1) t.classList.add('active');
+  });
+  document.querySelectorAll('.nav-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.nav-tab').forEach(function(t){
+    if (t.onclick && t.onclick.toString().indexOf("'" + id + "'") > -1) t.classList.add('active');
+  });
+  window.scrollTo({top: 0, behavior:'smooth'});
+}
+
+// Open from URL hash
+var hash = window.location.hash.replace('#','');
+if (hash === 'nautico' || hash === 'cars' || hash === 'invest') showVert(hash);
+</script>
+</body>
+</html>
