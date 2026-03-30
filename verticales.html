@@ -172,6 +172,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
     <button class="nav-tab active" onclick="showVert('invest')">Fractal Invest</button>
     <button class="nav-tab" onclick="showVert('nautico')">Fractal Náutico</button>
     <button class="nav-tab" onclick="showVert('cars')">Fractal Premium Cars</button>
+    <button class="nav-tab" onclick="showVert('pyp')">Optimización P&amp;P</button>
   </div>
   <a href="exchange.html" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;padding:8px 16px;border:1px solid rgba(184,147,90,.3)">Exchange →</a>
   <a href="index.html" class="nav-back">← Volver al inicio</a>
@@ -203,6 +204,12 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
     <div class="vt-name">Fractal Premium Cars</div>
     <div class="vt-title">Copropiedad de autos de lujo</div>
     <div class="vt-tag">lifestyle premium</div>
+  </div>
+  <div class="vert-tab" onclick="showVert('pyp')">
+    <div class="vt-num">04</div>
+    <div class="vt-name">Optimización Pico y Placa</div>
+    <div class="vt-title">Tu día sin carro resuelto</div>
+    <div class="vt-tag">exclusivo colombia</div>
   </div>
 </div>
 
@@ -789,7 +796,127 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
     </div>
   </div>
 
+
+
   <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- PICO Y PLACA -->
+  <div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:56px" id="pico-placa">
+    <div class="sec-inner">
+      <div class="sec-tag">Exclusivo Colombia · Fractal Premium Cars</div>
+      <h2 class="sec-h2">Tu pico y placa resuelto.<br><em>Con el carro que siempre quisiste.</em></h2>
+      <p class="sec-p" style="margin-bottom:12px">En Bogotá, Medellín, Pereira y Manizales el pico y placa te deja sin carro hasta 2 veces por semana. Con Fractal Premium Cars cada socio registra su placa personal — y cuando no puede usar su carro, reserva el Fractal.</p>
+      <p class="sec-p" style="margin-bottom:32px">El vehículo Fractal siempre tiene placa distinta a la de todos los socios. No solo tienes un supercar para los fines de semana — tienes una solución real para los días de semana más molestos del año.</p>
+
+      <!-- TABLA PICO Y PLACA INTERACTIVA -->
+      <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.15);padding:32px;margin-bottom:32px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px">
+          <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)">¿Qué día tienes pico y placa?</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap" id="pyp-dias">
+            <button class="pyp-btn active" data-dia="lunes" onclick="setPyp(this)">Lunes</button>
+            <button class="pyp-btn" data-dia="martes" onclick="setPyp(this)">Martes</button>
+            <button class="pyp-btn" data-dia="miercoles" onclick="setPyp(this)">Miércoles</button>
+            <button class="pyp-btn" data-dia="jueves" onclick="setPyp(this)">Jueves</button>
+            <button class="pyp-btn" data-dia="viernes" onclick="setPyp(this)">Viernes</button>
+          </div>
+        </div>
+
+        <div id="pyp-result" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+          <div>
+            <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:12px">Placas restringidas ese día</div>
+            <div id="pyp-placas" style="font-family:var(--serif);font-size:48px;font-weight:300;color:var(--gold);letter-spacing:.1em">1 · 2</div>
+            <div id="pyp-horario" style="font-size:12px;color:var(--stone);margin-top:8px;line-height:1.6"></div>
+          </div>
+          <div style="background:#0d0d0b;padding:20px 24px;border:1px solid rgba(184,147,90,.12)">
+            <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Cómo funciona con Fractal</div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:13px;color:rgba(245,240,232,.7);display:flex;gap:10px"><span style="color:var(--gold)">—</span>Reservas el Fractal por la APP la noche anterior</div>
+              <div style="font-size:13px;color:rgba(245,240,232,.7);display:flex;gap:10px"><span style="color:var(--gold)">—</span>El chofer lo lleva a tu puerta a la hora que necesites</div>
+              <div style="font-size:13px;color:rgba(245,240,232,.7);display:flex;gap:10px"><span style="color:var(--gold)">—</span>Lo usas durante las horas de restricción</div>
+              <div style="font-size:13px;color:rgba(245,240,232,.7);display:flex;gap:10px"><span style="color:var(--gold)">—</span>Si lo devuelves al mediodía: 0.5 puntos. Si te quedas todo el día: 1 punto</div>
+              <div style="font-size:13px;color:rgba(245,240,232,.7);display:flex;gap:10px"><span style="color:var(--gold)">—</span>El chofer lo recoge cuando terminas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LA REGLA DE LAS 8 PLACAS -->
+      <div style="background:#0d0d0b;border:1px solid rgba(122,116,104,.12);padding:28px 32px;margin-bottom:24px">
+        <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">La regla de los 8 socios — placas distintas</div>
+        <p style="font-size:14px;color:var(--stone);line-height:1.75;margin-bottom:20px">Fractal verifica que los 8 socios cubran el mayor número posible de dígitos de placa distintos. Idealmente cada socio tiene un dígito final diferente — así el vehículo tiene demanda de uso los 5 días de la semana y ningún socio compite con otro por el pico y placa.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(122,116,104,.1)">
+          <div style="background:#0a0a08;padding:16px;text-align:center">
+            <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Lunes</div>
+            <div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300">1 · 2</div>
+            <div style="font-size:10px;color:var(--stone);margin-top:4px">2 socios</div>
+          </div>
+          <div style="background:#0a0a08;padding:16px;text-align:center">
+            <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Martes</div>
+            <div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300">3 · 4</div>
+            <div style="font-size:10px;color:var(--stone);margin-top:4px">2 socios</div>
+          </div>
+          <div style="background:#0a0a08;padding:16px;text-align:center">
+            <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Miércoles</div>
+            <div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300">5 · 6</div>
+            <div style="font-size:10px;color:var(--stone);margin-top:4px">2 socios</div>
+          </div>
+          <div style="background:#0a0a08;padding:16px;text-align:center">
+            <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Jueves</div>
+            <div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300">7 · 8</div>
+            <div style="font-size:10px;color:var(--stone);margin-top:4px">2 socios</div>
+          </div>
+          <div style="background:#0a0a08;padding:16px;text-align:center">
+            <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Viernes</div>
+            <div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300">9 · 0</div>
+            <div style="font-size:10px;color:var(--stone);margin-top:4px">2 socios ideal</div>
+          </div>
+        </div>
+        <p style="font-size:11px;color:rgba(122,116,104,.4);margin-top:12px;line-height:1.5">El vehículo Fractal tiene una placa diferente a todos los socios. Fractal verifica la cobertura de placas en el proceso de admisión. Si 2 socios tienen la misma restricción, el sistema de reservas prioriza por orden de solicitud.</p>
+      </div>
+
+      <!-- TIPOS DE USO Y CONSUMO DE DÍAS -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.1)">
+        <div style="background:#0d0d0b;padding:24px 22px">
+          <div style="font-size:22px;margin-bottom:10px">🕐</div>
+          <div style="font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px">Uso de paso</div>
+          <div style="font-family:var(--serif);font-size:20px;color:var(--gold);margin-bottom:8px">0.25 pts</div>
+          <div style="font-size:12px;color:var(--stone);line-height:1.6">Solo para los desplazamientos de pico y placa. Menos de 4 horas de uso. Lo tomas, haces tus diligencias, lo devuelves.</div>
+        </div>
+        <div style="background:#111009;padding:24px 22px;border:1px solid rgba(184,147,90,.15)">
+          <div style="font-size:22px;margin-bottom:10px">☀️</div>
+          <div style="font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px">Uso de medio día</div>
+          <div style="font-family:var(--serif);font-size:20px;color:var(--gold);margin-bottom:8px">0.50 pts</div>
+          <div style="font-size:12px;color:var(--stone);line-height:1.6">Lo tienes toda la mañana o toda la tarde. Lo devuelves antes del siguiente turno. Ideal si tienes reuniones largas ese día.</div>
+        </div>
+        <div style="background:#0d0d0b;padding:24px 22px">
+          <div style="font-size:22px;margin-bottom:10px">📅</div>
+          <div style="font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px">Día ya reservado</div>
+          <div style="font-family:var(--serif);font-size:20px;color:var(--gold);margin-bottom:8px">Sin costo extra</div>
+          <div style="font-size:12px;color:var(--stone);line-height:1.6">Si el día ya está en tu calendario de uso habitual, el pico y placa queda cubierto automáticamente. No gastas puntos adicionales.</div>
+        </div>
+      </div>
+
+      <!-- IMPACTO EN UTILIZACIÓN -->
+      <div style="background:#0a0a08;border:1px solid rgba(184,147,90,.1);padding:20px 28px;margin-top:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;text-align:center">
+        <div>
+          <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:8px">Días de uso auto propio</div>
+          <div style="font-family:var(--serif);font-size:32px;color:rgba(200,80,80,.8);font-weight:300">~20 días</div>
+          <div style="font-size:11px;color:var(--stone)">promedio anual real</div>
+        </div>
+        <div>
+          <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:8px">Días de uso Fractal</div>
+          <div style="font-family:var(--serif);font-size:32px;color:var(--gold);font-weight:300">80–90 días</div>
+          <div style="font-size:11px;color:var(--stone)">44 asignados + pico y placa</div>
+        </div>
+        <div>
+          <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:8px">Costo real por día</div>
+          <div style="font-family:var(--serif);font-size:32px;color:var(--gold);font-weight:300">↓ 4×</div>
+          <div style="font-size:11px;color:var(--stone)">vs auto propio con p&p incluido</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- VS AUTO PROPIO -->
   <div class="sec" style="background:#09090a;padding-top:48px;padding-bottom:48px">
@@ -978,6 +1105,130 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
   <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
 
+  <!-- CALCULADORA UNIVERSAL -->
+  <div class="sec" id="calc-cars" style="padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Calculadora universal</div>
+      <h2 class="sec-h2">¿Cuánto costará<br><em>tu vehículo específico?</em></h2>
+      <p class="sec-p" style="margin-bottom:40px">Ingresa el precio de cualquier vehículo — desde una Tesla Model Y de $148M hasta un Ferrari de $1.200M. La calculadora te muestra la entrada por socio, la cuota mensual todo incluido y el costo por día de uso real.</p>
+
+      <div style="background:#09090a;border:1px solid rgba(122,116,104,.15);padding:40px 48px">
+
+        <!-- INPUTS -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:32px">
+
+          <div>
+            <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-bottom:10px">Precio del vehículo (COP)</div>
+            <div style="display:flex;align-items:center;border:1px solid rgba(122,116,104,.2);background:#0a0a08;margin-bottom:8px">
+              <span style="padding:12px 14px;font-size:14px;color:var(--stone);border-right:1px solid rgba(122,116,104,.12)">$</span>
+              <input type="text" id="cv-precio" placeholder="148.000.000" autocomplete="off"
+                style="flex:1;background:transparent;border:none;color:var(--cream);padding:12px 14px;font-family:var(--sans);font-size:14px;outline:none"
+                oninput="onCvPrecio(this)" onblur="formatCvPrecio(this)">
+            </div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <button class="cv-preset" data-v="148000000" onclick="setCvPreset(this)">$148M</button>
+              <button class="cv-preset" data-v="300000000" onclick="setCvPreset(this)">$300M</button>
+              <button class="cv-preset" data-v="620000000" onclick="setCvPreset(this)">$620M</button>
+              <button class="cv-preset" data-v="900000000" onclick="setCvPreset(this)">$900M</button>
+              <button class="cv-preset" data-v="1200000000" onclick="setCvPreset(this)">$1.200M</button>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-bottom:10px">Número de socios</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+              <button class="cv-socios active" data-s="8" onclick="setCvSocios(this)">8 socios</button>
+              <button class="cv-socios" data-s="6" onclick="setCvSocios(this)">6 socios</button>
+              <button class="cv-socios" data-s="4" onclick="setCvSocios(this)">4 socios</button>
+              <button class="cv-socios" data-s="2" onclick="setCvSocios(this)">2 socios</button>
+            </div>
+            <div style="font-size:11px;color:rgba(122,116,104,.45);margin-top:6px;line-height:1.5">Fractal recomienda 8 socios para maximizar la eficiencia de costos.</div>
+          </div>
+
+          <div>
+            <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-bottom:10px">Nombre del vehículo</div>
+            <input type="text" id="cv-nombre" placeholder="Tesla Model Y, Porsche 911..." autocomplete="off"
+              style="width:100%;background:#0a0a08;border:1px solid rgba(122,116,104,.2);color:var(--cream);padding:12px 14px;font-family:var(--sans);font-size:14px;outline:none;margin-bottom:8px"
+              oninput="calcVehiculo()">
+            <div style="font-size:11px;color:rgba(122,116,104,.45);line-height:1.5">Solo para identificar el cálculo. No afecta los números.</div>
+          </div>
+
+        </div>
+
+        <!-- RESULTADO PRINCIPAL -->
+        <div id="cv-result" style="display:none">
+
+          <div id="cv-nombre-display" style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(122,116,104,.12)"></div>
+
+          <!-- BIG NUMBERS — MODELO CORRECTO -->
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.12);margin-bottom:8px">
+            <div style="background:#0d0d0b;padding:22px 18px;text-align:center">
+              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Capital entrada<br><span style="color:rgba(120,200,120,.6)">lo recuperas al vender</span></div>
+              <div id="cv-entrada" style="font-family:var(--serif);font-size:clamp(15px,1.8vw,22px);font-weight:300;color:var(--cream);line-height:1.2">—</div>
+            </div>
+            <div style="background:#0d0d0b;padding:22px 18px;text-align:center">
+              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Costos operativos/mes<br><span style="color:rgba(200,80,80,.6)">sí se pierden</span></div>
+              <div id="cv-cuota" style="font-family:var(--serif);font-size:clamp(15px,1.8vw,22px);font-weight:300;color:var(--cream);line-height:1.2">—</div>
+            </div>
+            <div style="background:#0d0d0b;padding:22px 18px;text-align:center">
+              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Depreciación/mes<br><span style="color:rgba(200,80,80,.6)">pérdida real del activo</span></div>
+              <div id="cv-dep" style="font-family:var(--serif);font-size:clamp(15px,1.8vw,22px);font-weight:300;color:rgba(245,240,232,.7);line-height:1.2">—</div>
+            </div>
+            <div style="background:#111009;padding:22px 18px;text-align:center;border:1px solid rgba(184,147,90,.25)">
+              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Costo real/día<br><span style="color:rgba(184,147,90,.6)">operativos + deprec ÷ días</span></div>
+              <div id="cv-dia" style="font-family:var(--serif);font-size:clamp(22px,2.8vw,38px);font-weight:300;color:var(--gold);line-height:1">—</div>
+            </div>
+          </div>
+          <div id="cv-recuperas" style="font-size:12px;color:rgba(120,200,120,.65);padding:8px 14px;margin-bottom:16px;background:rgba(120,200,120,.04);border:1px solid rgba(120,200,120,.1)"></div>
+
+          <!-- DESGLOSE COMPLETO -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+
+            <div>
+              <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Desglose costos mensuales — activo completo</div>
+              <div id="cv-desglose" style="display:flex;flex-direction:column"></div>
+              <div id="cv-total-row" style="display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid rgba(184,147,90,.2);margin-top:4px">
+                <span style="font-size:13px;font-weight:500;color:var(--cream)">Total mensual activo completo</span>
+                <span id="cv-total" style="font-family:var(--serif);font-size:18px;color:var(--gold)">—</span>
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Comparativo costo por día de uso</div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="background:#0a0a08;padding:16px;border:1px solid rgba(122,116,104,.1)">
+                  <div style="font-size:11px;color:var(--stone);margin-bottom:4px">Alquiler de lujo en el mercado</div>
+                  <div style="font-family:var(--serif);font-size:24px;color:rgba(200,80,80,.8);font-weight:300">$2.500.000–$5.000.000/día</div>
+                </div>
+                <div style="background:#0a0a08;padding:16px;border:1px solid rgba(184,147,90,.2)">
+                  <div style="font-size:11px;color:var(--stone);margin-bottom:4px">Auto propio (costo real total ÷ 20 días uso)</div>
+                  <div id="cv-dia-propio" style="font-family:var(--serif);font-size:24px;color:rgba(200,80,80,.7);font-weight:300">—</div>
+                </div>
+                <div style="background:#111009;padding:16px;border:1px solid rgba(184,147,90,.3)">
+                  <div style="font-size:11px;color:var(--gold);margin-bottom:4px">Fractal — tu costo por día real</div>
+                  <div id="cv-dia-fractal" style="font-family:var(--serif);font-size:32px;color:var(--gold);font-weight:300">—</div>
+                </div>
+                <div id="cv-ahorro-box" style="background:#09090a;padding:12px 16px;border:1px solid rgba(122,116,104,.1);font-size:12px;color:var(--stone);line-height:1.6"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="font-size:11px;color:rgba(122,116,104,.35);margin-top:20px;line-height:1.5;padding-top:16px;border-top:1px solid rgba(122,116,104,.08)">
+            Cálculo estimado. Incluye: seguro todo riesgo 2.5% anual, chofer de planta + prestaciones, Uber logístico entrega/recogida, parqueadero cubierto premium, lavada premium 2×/semana, mantenimiento preventivo oficial 2.4% anual (mín. $800k), fondo contingencias 1% anual (mín. $400k), combustible operativo, SOAT y fee operativo Fractal. Valores para Medellín y Bogotá — pueden variar.
+          </div>
+        </div>
+
+        <!-- EMPTY STATE -->
+        <div id="cv-empty" style="text-align:center;padding:40px 0;color:var(--stone)">
+          <div style="font-family:var(--serif);font-size:20px;margin-bottom:8px;color:rgba(245,240,232,.4)">Ingresa el precio del vehículo para ver el cálculo</div>
+          <div style="font-size:13px">Ejemplo: Tesla Model Y = $148.000.000</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- PORTAFOLIO Y COSTOS -->
   <div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:56px">
     <div class="sec-inner">
@@ -1055,24 +1306,217 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
     </div>
   </div>
 
-  <!-- CTA -->
-  <div class="sec" style="padding-top:56px;padding-bottom:72px">
+
+  <!-- PICO Y PLACA SUB-PANEL -->
+  <div id="cars-sub-pyp" style="display:none">
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <div class="sec" style="padding-top:56px;padding-bottom:0">
     <div class="sec-inner">
-      <div class="vert-cta">
-        <div>
-          <div class="vc-title">¿Cuál es tu supercar<br>y en qué ciudad arrancamos?</div>
-          <div class="vc-sub">Fractal Premium Cars está en desarrollo. Regístrate con tu preferencia de marca, ciudad y presupuesto — los primeros en registrar tienen prioridad de selección y son parte de la comunidad fundadora.</div>
-        </div>
-        <a href="index.html#contacto" class="vc-btn">Ser co-propietario fundador →</a>
-      </div>
-    </div>
-  </div>
+      <div class="sec-tag">Optimización Pico y Placa · Exclusivo Colombia</div>
+      <h2 class="sec-h2">Tu solución definitiva<br><em>para los días sin carro.</em></h2>
+      <p class="sec-p" style="margin-bottom:16px">En Bogotá y Medellín el pico y placa te quita el carro lunes a viernes en las horas pico. Con este modelo 5 socios comparten un vehículo de lujo asignado por día de la semana según su placa. El chofer está todos los días y cada noche se desplaza al domicilio del socio del día siguiente.</p>
+      <p class="sec-p" style="margin-bottom:32px">No es un taxi de lujo. Es tu vehículo — con tu chofer — esperándote cada mañana en la puerta de tu casa.</p>
 
-</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.12);margin-bottom:40px">
+        <div style="background:#0d0d0b;padding:28px 24px;text-align:center">
+          <div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:8px">Máximo de socios</div>
+          <div style="font-family:var(--serif);font-size:48px;font-weight:300;color:var(--gold);line00am y 3:00–7:00pm' },
+  martes:     { placas: '3 · 4', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+  miercoles:  { placas: '5 · 6', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+  jueves:     { placas: '7 · 8', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+  viernes:    { placas: '9 · 0', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+};
 
-<!-- /FRACTAL PREMIUM CARS -->
+function setPyp(btn) {
+  document.querySelectorAll('.pyp-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  var dia = btn.dataset.dia;
+  var d   = PYP[dia];
+  if (!d) return;
+  var pl = document.getElementById('pyp-placas');
+  var ho = document.getElementById('pyp-horario');
+  if (pl) pl.textContent = d.placas;
+  if (ho) ho.innerHTML  = '📍 ' + d.med + '<br>📍 ' + d.bog;
+}
 
-<script>
+// Init
+(function(){ var first = document.querySelector('.pyp-btn.active'); if (first) setPyp(first); })();
+
+
+// ── CALCULADORA UNIVERSAL VEHÍCULOS ─────────────────────────────────────────
+var _cvSocios = 8;
+var _cvPrecio = 0;
+var _cvHorizonte = 3;
+var _cvDep = 0.10;
+
+function setCvPreset(btn) {
+  var v = parseInt(btn.dataset.v);
+  var inp = document.getElementById('cv-precio');
+  if (inp) inp.value = v.toLocaleString('es-CO');
+  document.querySelectorAll('.cv-preset').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  _cvPrecio = v;
+  calcVehiculo();
+}
+
+function setCvSocios(btn) {
+  _cvSocios = parseInt(btn.dataset.s);
+  document.querySelectorAll('.cv-socios').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  calcVehiculo();
+}
+
+function onCvPrecio(el) {
+  var raw = parseInt(el.value.replace(/[^0-9]/g, '')) || 0;
+  _cvPrecio = raw;
+  document.querySelectorAll('.cv-preset').forEach(function(b){
+    b.classList.toggle('active', parseInt(b.dataset.v) === raw);
+  });
+  calcVehiculo();
+}
+
+function formatCvPrecio(el) {
+  var raw = parseInt(el.value.replace(/[^0-9]/g, '')) || 0;
+  if (raw > 0) el.value = raw.toLocaleString('es-CO');
+}
+
+function calcVehiculo() {
+  var precio  = _cvPrecio;
+  var nSocios = _cvSocios;
+  var nombreEl = document.getElementById('cv-nombre');
+  var nombre   = (nombreEl && nombreEl.value.trim()) ? nombreEl.value.trim() : 'Tu vehículo';
+
+  var emptyEl  = document.getElementById('cv-empty');
+  var resultEl = document.getElementById('cv-result');
+  if (!precio || precio < 10000000) {
+    if (emptyEl)  emptyEl.style.display  = 'block';
+    if (resultEl) resultEl.style.display = 'none';
+    return;
+  }
+  if (emptyEl)  emptyEl.style.display  = 'none';
+  if (resultEl) resultEl.style.display = 'block';
+
+  function cop(n){ return '$' + Math.round(n).toLocaleString('es-CO'); }
+  function s(id, v){ var el=document.getElementById(id); if(el) el.textContent=v; }
+
+  // ── CAPITAL (no es gasto) ──────────────────────────────────────────────────
+  var entrada  = precio / nSocios;
+
+  // ── COSTOS OPERATIVOS ANUALES (÷ socios) — sí se pierden ──────────────────
+  var seguro   = precio * 0.025;
+  var parqueo  = 2000000 * 12;
+  var lavada   = 1920000 * 12;
+  var chofer   = 4200000 * 12;
+  var uber     =  550000 * 12;
+  var combus   =  800000 * 12;
+  var soat     =  350000 * 12;
+  var manto    = Math.max(9600000, precio * 0.024);
+  var conting  = Math.max(4800000, precio * 0.010);
+  var fee      =  500000 * 12;
+
+  var opTotalAño = seguro + parqueo + lavada + chofer + uber + combus + soat + manto + conting + fee;
+  var opSocioAño = opTotalAño / nSocios;
+  var opSocioMes = opSocioAño / 12;
+
+  // ── DEPRECIACIÓN — pérdida real de capital ─────────────────────────────────
+  var horizonte    = _cvHorizonte;
+  var depPct       = _cvDep;
+  var valorResid   = precio * Math.pow(1 - depPct, horizonte);
+  var deprecTotal  = precio - valorResid;
+  var deprecSocio  = deprecTotal / nSocios;
+  var deprecAño    = deprecSocio / horizonte;
+  var recuperas    = valorResid / nSocios;
+
+  // ── COSTO REAL = operativos + depreciación ─────────────────────────────────
+  var costoRealAño = opSocioAño + deprecAño;
+  var diasAño      = Math.round(365 / nSocios);
+  var costoDia     = costoRealAño / diasAño;
+
+  // Update UI
+  var nd = document.getElementById('cv-nombre-display');
+  if (nd) nd.textContent = nombre + ' — ' + nSocios + ' co-propietario(s)';
+
+  s('cv-entrada',    cop(entrada) + ' ← capital (recuperas ~' + cop(recuperas) + ' al vender año ' + horizonte + ')');
+  s('cv-cuota',      cop(opSocioMes) + '/mes operativos');
+  s('cv-dep',        cop(deprecAño / 12) + '/mes depreciación');
+  s('cv-dia',        cop(costoDia) + '/día');
+  s('cv-total',      cop(opTotalAño / nSocios) + '/año operativos + ' + cop(deprecAño) + '/año deprec.');
+  s('cv-recuperas',  'Recuperas ' + cop(recuperas) + ' de ' + cop(entrada) + ' al vender en año ' + horizonte);
+
+  // Costo auto propio
+  var opPropioAño  = opTotalAño;  // mismo carro, solo tú
+  var deprecPropioAño = deprecTotal / horizonte;
+  var diaPropio    = (opPropioAño + deprecPropioAño) / 20; // ~20 días uso/año
+  s('cv-dia-propio',  cop(diaPropio) + '/día');
+  s('cv-dia-fractal', cop(costoDia) + '/día');
+
+  var ahorro = diaPropio - costoDia;
+  var ab = document.getElementById('cv-ahorro-box');
+  if (ab) ab.innerHTML =
+    '✓ Con Fractal el costo real por día de uso es <strong style="color:var(--gold)">' + cop(costoDia) + '</strong> (operativos + depreciación ÷ días de uso).<br>' +
+    'Tener el mismo carro solo costaría <strong>' + cop(diaPropio) + '/día</strong> porque lo usarías ~20 días/año vs ' + diasAño + ' días con Fractal.';
+
+  // Desglose
+  var dsg = document.getElementById('cv-desglose');
+  if (dsg) {
+    var rows = [
+      ['Seguro todo riesgo (2.5% anual)', seguro / nSocios],
+      ['Chofer de planta + prestaciones', chofer / nSocios],
+      ['Parqueadero cubierto premium',    parqueo / nSocios],
+      ['Lavada premium 2×/semana',        lavada / nSocios],
+      ['Uber logístico entrega/recogida', uber / nSocios],
+      ['Mantenimiento oficial',           manto / nSocios],
+      ['Combustible operativo',           combus / nSocios],
+      ['SOAT + rodamiento',               soat / nSocios],
+      ['Fondo contingencias',             conting / nSocios],
+      ['Fee operativo Fractal',           fee / nSocios],
+    ];
+    dsg.innerHTML =
+      '<div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(184,147,90,.6);margin-bottom:8px">COSTOS OPERATIVOS ANUALES (sí se pierden)</div>' +
+      rows.map(function(r){
+        return '<div class="cv-row"><span>' + r[0] + '</span><span>' + cop(r[1]) + '/año</span></div>';
+      }).join('') +
+      '<div class="cv-row" style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(184,147,90,.15)"><span style="color:rgba(184,147,90,.7)">Depreciación ' + horizonte + ' años (' + (depPct*100).toFixed(0) + '% anual) tu parte</span><span style="color:var(--gold)">' + cop(deprecAño) + '/año</span></div>' +
+      '<div class="cv-row" style="margin-top:8px"><span style="color:rgba(120,200,120,.7)">Recuperas al vender año ' + horizonte + '</span><span style="color:rgba(120,200,120,.8)">' + cop(recuperas) + '</span></div>';
+  }
+}
+
+(function(){
+  var inp = document.getElementById('cv-precio');
+  if (inp) { inp.value = (148000000).toLocaleString('es-CO'); _cvPrecio = 148000000; }
+  document.querySelectorAll('.cv-preset').forEach(function(b){
+    if (b.dataset.v === '148000000') b.classList.add('active');
+  });
+  calcVehiculo();
+})();
+
+// ── PICO Y PLACA  ────────────────────────────────────────────────────────────
+var PYP = {
+  lunes:      { placas: '1 · 2', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+  martes:     { placas: '3 · 4', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+  miercoles:  { placas: '5 · 6', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+  jueves:     { placas: '7 · 8', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+  viernes:    { placas: '9 · 0', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+};
+
+function setPyp(btn) {
+  document.querySelectorAll('.pyp-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  var dia = btn.dataset.dia;
+  var d   = PYP[dia];
+  if (!d) return;
+  var pl = document.getElementById('pyp-placas');
+  var ho = document.getElementById('pyp-horario');
+  if (pl) pl.textContent = d.placas;
+  if (ho) ho.innerHTML  = '📍 ' + d.med + '<br>📍 ' + d.bog;
+}
+
+// Init
+(function(){ var first = document.querySelector('.pyp-btn.active'); if (first) setPyp(first); })();
+
+
 function showVert(id) {
   document.querySelectorAll('.vert-content').forEach(function(p){ p.classList.remove('active'); });
   var panel = document.getElementById('panel-' + id);
