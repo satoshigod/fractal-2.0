@@ -796,127 +796,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
     </div>
   </div>
 
-
-
   <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
-
-  <!-- PICO Y PLACA -->
-  <div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:56px" id="pico-placa">
-    <div class="sec-inner">
-      <div class="sec-tag">Exclusivo Colombia · Fractal Premium Cars</div>
-      <h2 class="sec-h2">Tu pico y placa resuelto.<br><em>Con el carro que siempre quisiste.</em></h2>
-      <p class="sec-p" style="margin-bottom:12px">En Bogotá, Medellín, Pereira y Manizales el pico y placa te deja sin carro hasta 2 veces por semana. Con Fractal Premium Cars cada socio registra su placa personal — y cuando no puede usar su carro, reserva el Fractal.</p>
-      <p class="sec-p" style="margin-bottom:32px">El vehículo Fractal siempre tiene placa distinta a la de todos los socios. No solo tienes un supercar para los fines de semana — tienes una solución real para los días de semana más molestos del año.</p>
-
-      <!-- TABLA PICO Y PLACA INTERACTIVA -->
-      <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.15);padding:32px;margin-bottom:32px">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px">
-          <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)">¿Qué día tienes pico y placa?</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap" id="pyp-dias">
-            <button class="pyp-btn active" data-dia="lunes" onclick="setPyp(this)">Lunes</button>
-            <button class="pyp-btn" data-dia="martes" onclick="setPyp(this)">Martes</button>
-            <button class="pyp-btn" data-dia="miercoles" onclick="setPyp(this)">Miércoles</button>
-            <button class="pyp-btn" data-dia="jueves" onclick="setPyp(this)">Jueves</button>
-            <button class="pyp-btn" data-dia="viernes" onclick="setPyp(this)">Viernes</button>
-          </div>
-        </div>
-
-        <div id="pyp-result" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
-          <div>
-            <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:12px">Placas restringidas ese día</div>
-            <div id="pyp-placas" style="font-family:var(--serif);font-size:48px;font-weight:300;color:var(--gold);letter-spacing:.1em">1 · 2</div>
-            <div id="pyp-horario" style="font-size:12px;color:var(--stone);margin-top:8px;line-height:1.6"></div>
-          </div>
-          <div style="background:#0d0d0b;padding:20px 24px;border:1px solid rgba(184,147,90,.12)">
-            <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Cómo funciona con Fractal</div>
-            <div style="display:flex;flex-direction:column;gap:8px">
-              <div style="font-size:13px;color:rgba(245,240,232,.7);display:flex;gap:10px"><span style="color:var(--gold)">—</span>Reservas el Fractal por la APP la noche anterior</div>
-              <div style="font-size:13px;color:rgba(245,240,232,.7);display:flex;gap:10px"><span style="color:var(--gold)">—</span>El chofer lo lleva a tu puerta a la hora que necesites</div>
-              <div style="font-size:13px;color:rgba(245,240,232,.7);display:flex;gap:10px"><span style="color:var(--gold)">—</span>Lo usas durante las horas de restricción</div>
-              <div style="font-size:13px;color:rgba(245,240,232,.7);display:flex;gap:10px"><span style="color:var(--gold)">—</span>Si lo devuelves al mediodía: 0.5 puntos. Si te quedas todo el día: 1 punto</div>
-              <div style="font-size:13px;color:rgba(245,240,232,.7);display:flex;gap:10px"><span style="color:var(--gold)">—</span>El chofer lo recoge cuando terminas</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- LA REGLA DE LAS 8 PLACAS -->
-      <div style="background:#0d0d0b;border:1px solid rgba(122,116,104,.12);padding:28px 32px;margin-bottom:24px">
-        <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">La regla de los 8 socios — placas distintas</div>
-        <p style="font-size:14px;color:var(--stone);line-height:1.75;margin-bottom:20px">Fractal verifica que los 8 socios cubran el mayor número posible de dígitos de placa distintos. Idealmente cada socio tiene un dígito final diferente — así el vehículo tiene demanda de uso los 5 días de la semana y ningún socio compite con otro por el pico y placa.</p>
-
-        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(122,116,104,.1)">
-          <div style="background:#0a0a08;padding:16px;text-align:center">
-            <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Lunes</div>
-            <div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300">1 · 2</div>
-            <div style="font-size:10px;color:var(--stone);margin-top:4px">2 socios</div>
-          </div>
-          <div style="background:#0a0a08;padding:16px;text-align:center">
-            <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Martes</div>
-            <div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300">3 · 4</div>
-            <div style="font-size:10px;color:var(--stone);margin-top:4px">2 socios</div>
-          </div>
-          <div style="background:#0a0a08;padding:16px;text-align:center">
-            <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Miércoles</div>
-            <div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300">5 · 6</div>
-            <div style="font-size:10px;color:var(--stone);margin-top:4px">2 socios</div>
-          </div>
-          <div style="background:#0a0a08;padding:16px;text-align:center">
-            <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Jueves</div>
-            <div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300">7 · 8</div>
-            <div style="font-size:10px;color:var(--stone);margin-top:4px">2 socios</div>
-          </div>
-          <div style="background:#0a0a08;padding:16px;text-align:center">
-            <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Viernes</div>
-            <div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300">9 · 0</div>
-            <div style="font-size:10px;color:var(--stone);margin-top:4px">2 socios ideal</div>
-          </div>
-        </div>
-        <p style="font-size:11px;color:rgba(122,116,104,.4);margin-top:12px;line-height:1.5">El vehículo Fractal tiene una placa diferente a todos los socios. Fractal verifica la cobertura de placas en el proceso de admisión. Si 2 socios tienen la misma restricción, el sistema de reservas prioriza por orden de solicitud.</p>
-      </div>
-
-      <!-- TIPOS DE USO Y CONSUMO DE DÍAS -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.1)">
-        <div style="background:#0d0d0b;padding:24px 22px">
-          <div style="font-size:22px;margin-bottom:10px">🕐</div>
-          <div style="font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px">Uso de paso</div>
-          <div style="font-family:var(--serif);font-size:20px;color:var(--gold);margin-bottom:8px">0.25 pts</div>
-          <div style="font-size:12px;color:var(--stone);line-height:1.6">Solo para los desplazamientos de pico y placa. Menos de 4 horas de uso. Lo tomas, haces tus diligencias, lo devuelves.</div>
-        </div>
-        <div style="background:#111009;padding:24px 22px;border:1px solid rgba(184,147,90,.15)">
-          <div style="font-size:22px;margin-bottom:10px">☀️</div>
-          <div style="font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px">Uso de medio día</div>
-          <div style="font-family:var(--serif);font-size:20px;color:var(--gold);margin-bottom:8px">0.50 pts</div>
-          <div style="font-size:12px;color:var(--stone);line-height:1.6">Lo tienes toda la mañana o toda la tarde. Lo devuelves antes del siguiente turno. Ideal si tienes reuniones largas ese día.</div>
-        </div>
-        <div style="background:#0d0d0b;padding:24px 22px">
-          <div style="font-size:22px;margin-bottom:10px">📅</div>
-          <div style="font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px">Día ya reservado</div>
-          <div style="font-family:var(--serif);font-size:20px;color:var(--gold);margin-bottom:8px">Sin costo extra</div>
-          <div style="font-size:12px;color:var(--stone);line-height:1.6">Si el día ya está en tu calendario de uso habitual, el pico y placa queda cubierto automáticamente. No gastas puntos adicionales.</div>
-        </div>
-      </div>
-
-      <!-- IMPACTO EN UTILIZACIÓN -->
-      <div style="background:#0a0a08;border:1px solid rgba(184,147,90,.1);padding:20px 28px;margin-top:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;text-align:center">
-        <div>
-          <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:8px">Días de uso auto propio</div>
-          <div style="font-family:var(--serif);font-size:32px;color:rgba(200,80,80,.8);font-weight:300">~20 días</div>
-          <div style="font-size:11px;color:var(--stone)">promedio anual real</div>
-        </div>
-        <div>
-          <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:8px">Días de uso Fractal</div>
-          <div style="font-family:var(--serif);font-size:32px;color:var(--gold);font-weight:300">80–90 días</div>
-          <div style="font-size:11px;color:var(--stone)">44 asignados + pico y placa</div>
-        </div>
-        <div>
-          <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:8px">Costo real por día</div>
-          <div style="font-family:var(--serif);font-size:32px;color:var(--gold);font-weight:300">↓ 4×</div>
-          <div style="font-size:11px;color:var(--stone)">vs auto propio con p&p incluido</div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- VS AUTO PROPIO -->
   <div class="sec" style="background:#09090a;padding-top:48px;padding-bottom:48px">
@@ -933,91 +813,94 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
             <div class="rt-row"><span class="rt-label">Lavada premium 2×/semana</span><span class="rt-val red">$23.040.000</span></div>
             <div class="rt-row"><span class="rt-label">Chofer (si lo usas)</span><span class="rt-val red">$50.400.000</span></div>
             <div class="rt-row"><span class="rt-label">Mantenimiento anual oficial</span><span class="rt-val red">$18.000.000</span></div>
-            <div class="rt-row"><span class="rt-label">Depreciación año 1 (~12%)</span><span class="rt-val red">$74.400.000</span></div>
-            <div class="rt-row total"><span class="rt-label">Costo real año 1 (sin usar)</span><span class="rt-val red">$205.320.000</span></div>
+            <div class="rt-row"><span class="rt-label">Depreciación año 1 (~10%)</span><span class="rt-val red">$62.000.000</span></div>
+            <div class="rt-row total"><span class="rt-label">Costo real año 1</span><span class="rt-val red">$192.920.000</span></div>
             <div class="rt-row"><span class="rt-label">Días de uso promedio/año</span><span class="rt-val red">~20 días</span></div>
-            <div class="rt-row"><span class="rt-label">Costo real por día de uso</span><span class="rt-val red">$10.266.000/día</span></div>
+            <div class="rt-row"><span class="rt-label">Costo real por día (operativos+deprec÷días)</span><span class="rt-val red">$9.646.000/día</span></div>
           </div>
         </div>
         <div>
           <div class="row-table">
             <div class="rt-row"><span class="rt-label" style="font-weight:500;color:var(--cream)">FRACTAL PREMIUM CARS — mismo Porsche · 1/8</span><span></span></div>
-            <div class="rt-row"><span class="rt-label">Precio de entrada 1/8</span><span class="rt-val gold">$77.500.000</span></div>
-            <div class="rt-row"><span class="rt-label">Seguro todo riesgo (÷ 8)</span><span class="rt-val gold">$1.612.500/mes</span></div>
-            <div class="rt-row"><span class="rt-label">Parqueadero cubierto (÷ 8)</span><span class="rt-val gold">$250.000/mes</span></div>
-            <div class="rt-row"><span class="rt-label">Lavada premium 2×/sem. (÷ 8)</span><span class="rt-val gold">$240.000/mes</span></div>
-            <div class="rt-row"><span class="rt-label">Chofer de planta (÷ 8)</span><span class="rt-val gold">$525.000/mes</span></div>
-            <div class="rt-row"><span class="rt-label">Uber logístico entrega/recogida (÷ 8)</span><span class="rt-val gold">$62.500/mes</span></div>
-            <div class="rt-row"><span class="rt-label">Mantenimiento + contingencias (÷ 8)</span><span class="rt-val gold">$487.500/mes</span></div>
-            <div class="rt-row total"><span class="rt-label">Cuota mensual 1/8 todo incluido</span><span class="rt-val gold">$3.177.500/mes</span></div>
-            <div class="rt-row"><span class="rt-label">Días disponibles/año</span><span class="rt-val gold">44+ días</span></div>
-            <div class="rt-row"><span class="rt-label">Costo real por día de uso</span><span class="rt-val gold">$867.000/día</span></div>
+            <div class="rt-row"><span class="rt-label">Capital entrada 1/8 (recuperas al vender)</span><span class="rt-val gold">$77.500.000</span></div>
+            <div class="rt-row"><span class="rt-label">Cuota operativa mensual (÷8)</span><span class="rt-val gold">$1.671.042/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Depreciación mensual tu parte (÷8)</span><span class="rt-val">$645.833/mes</span></div>
+            <div class="rt-row total"><span class="rt-label">Costo real mensual (operativos + deprec)</span><span class="rt-val gold">$2.316.875/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Días disponibles/año</span><span class="rt-val gold">~46 días</span></div>
+            <div class="rt-row"><span class="rt-label">Costo real por día de uso</span><span class="rt-val gold">$603.000/día</span></div>
+            <div class="rt-row"><span class="rt-label">Recuperas al vender año 3</span><span class="rt-val" style="color:rgba(120,200,120,.8)">~$56.497.500</span></div>
           </div>
         </div>
       </div>
-      <div style="background:#0a0a08;border:1px solid rgba(184,147,90,.15);padding:16px 24px;margin-top:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;text-align:center">
-        <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Ahorro en entrada</div><div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300">$542.500.000</div><div style="font-size:11px;color:var(--stone)">87% menos capital</div></div>
-        <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Costo/día propio</div><div style="font-family:var(--serif);font-size:28px;color:rgba(200,80,80,.8);font-weight:300">$10.266.000</div><div style="font-size:11px;color:var(--stone)">con todos los gastos reales</div></div>
-        <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Costo/día Fractal</div><div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300">$867.000</div><div style="font-size:11px;color:var(--stone)">12× más eficiente</div></div>
+      <div style="background:#0a0a08;border:1px solid rgba(184,147,90,.15);padding:16px 24px;margin-top:20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;text-align:center">
+        <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Ahorro entrada</div><div style="font-family:var(--serif);font-size:26px;color:var(--gold);font-weight:300">$542.500.000</div><div style="font-size:11px;color:var(--stone)">87% menos capital</div></div>
+        <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Costo/día auto propio</div><div style="font-family:var(--serif);font-size:26px;color:rgba(200,80,80,.8);font-weight:300">$9.646.000</div><div style="font-size:11px;color:var(--stone)">operativos + deprec ÷ 20 días</div></div>
+        <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Costo/día Fractal</div><div style="font-family:var(--serif);font-size:26px;color:var(--gold);font-weight:300">$603.000</div><div style="font-size:11px;color:var(--stone)">16× más eficiente</div></div>
       </div>
     </div>
   </div>
 
   <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
 
-  <!-- LA EXPERIENCIA FRACTAL CARS -->
+  <!-- VS AUTO PROPIO -->
+  <div class="sec" style="background:#09090a;padding-top:48px;padding-bottom:48px">
+    <div class="sec-inner">
+      <div class="sec-tag">Lo que nadie te dice cuando compras un supercar</div>
+      <h2 class="sec-h2">El costo real de un Porsche 911<br>no es lo que vale el carro.</h2>
+      <div class="two-col">
+        <div>
+          <div class="row-table">
+            <div class="rt-row"><span class="rt-label" style="font-weight:500;color:var(--cream)">AUTO PROPIO — Porsche 911 Carrera</span><span></span></div>
+            <div class="rt-row"><span class="rt-label">Precio de compra</span><span class="rt-val red">$620.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Seguro todo riesgo anual</span><span class="rt-val red">$15.480.000</span></div>
+            <div class="rt-row"><span class="rt-label">Parqueadero cubierto anual</span><span class="rt-val red">$24.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Lavada premium 2×/semana</span><span class="rt-val red">$23.040.000</span></div>
+            <div class="rt-row"><span class="rt-label">Chofer (si lo usas)</span><span class="rt-val red">$50.400.000</span></div>
+            <div class="rt-row"><span class="rt-label">Mantenimiento anual oficial</span><span class="rt-val red">$18.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Depreciación año 1 (~10%)</span><span class="rt-val red">$62.000.000</span></div>
+            <div class="rt-row total"><span class="rt-label">Costo real año 1</span><span class="rt-val red">$192.920.000</span></div>
+            <div class="rt-row"><span class="rt-label">Días de uso promedio/año</span><span class="rt-val red">~20 días</span></div>
+            <div class="rt-row"><span class="rt-label">Costo real por día (operativos+deprec÷días)</span><span class="rt-val red">$9.646.000/día</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="row-table">
+            <div class="rt-row"><span class="rt-label" style="font-weight:500;color:var(--cream)">FRACTAL PREMIUM CARS — mismo Porsche · 1/8</span><span></span></div>
+            <div class="rt-row"><span class="rt-label">Capital entrada 1/8 (recuperas al vender)</span><span class="rt-val gold">$77.500.000</span></div>
+            <div class="rt-row"><span class="rt-label">Cuota operativa mensual (÷8)</span><span class="rt-val gold">$1.671.042/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Depreciación mensual tu parte (÷8)</span><span class="rt-val">$645.833/mes</span></div>
+            <div class="rt-row total"><span class="rt-label">Costo real mensual (operativos + deprec)</span><span class="rt-val gold">$2.316.875/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Días disponibles/año</span><span class="rt-val gold">~46 días</span></div>
+            <div class="rt-row"><span class="rt-label">Costo real por día de uso</span><span class="rt-val gold">$603.000/día</span></div>
+            <div class="rt-row"><span class="rt-label">Recuperas al vender año 3</span><span class="rt-val" style="color:rgba(120,200,120,.8)">~$56.497.500</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#0a0a08;border:1px solid rgba(184,147,90,.15);padding:16px 24px;margin-top:20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;text-align:center">
+        <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Ahorro entrada</div><div style="font-family:var(--serif);font-size:26px;color:var(--gold);font-weight:300">$542.500.000</div><div style="font-size:11px;color:var(--stone)">87% menos capital</div></div>
+        <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Costo/día auto propio</div><div style="font-family:var(--serif);font-size:26px;color:rgba(200,80,80,.8);font-weight:300">$9.646.000</div><div style="font-size:11px;color:var(--stone)">operativos + deprec ÷ 20 días</div></div>
+        <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Costo/día Fractal</div><div style="font-family:var(--serif);font-size:26px;color:var(--gold);font-weight:300">$603.000</div><div style="font-size:11px;color:var(--stone)">16× más eficiente</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- EXPERIENCIA -->
   <div class="sec" style="padding-top:56px;padding-bottom:56px">
     <div class="sec-inner">
       <div class="sec-tag">La experiencia completa</div>
       <h2 class="sec-h2">Diseñada para Colombia.<br>Con estándares globales.</h2>
-      <p class="sec-p" style="margin-bottom:40px">Tomamos las mejores prácticas de los clubes de supercars de Suiza, Mónaco y EE.UU. — y las adaptamos a la realidad colombiana. Sin las partes que no funcionan acá. Con todo lo que sí.</p>
-
       <div class="three-col">
-        <div class="col-card">
-          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🚿</div>
-          <div class="bf-title">Lavada premium 2× por semana</div>
-          <div class="bf-desc">Lavado a mano con productos de línea profesional — nunca túnel automático. Microfibra de alta densidad, ozono interior mensual. El auto siempre luce como el día que salió del concesionario.</div>
-        </div>
-        <div class="col-card">
-          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🏢</div>
-          <div class="bf-title">Parqueadero cubierto premium</div>
-          <div class="bf-desc">Espacio exclusivo con cámaras 24/7, control de acceso y ventilación. En El Poblado, Chicó o El Nogal según la ciudad. Los supercars no se parquean en la calle — nunca.</div>
-        </div>
-        <div class="col-card">
-          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🧑‍✈️</div>
-          <div class="bf-title">Chofer de planta uniformado</div>
-          <div class="bf-desc">Conductor profesional asignado al vehículo, certificado, uniformado. Siempre el mismo — te conoce, conoce tus rutas. Entrenado en protocolo de servicio premium. No es un conductor casual.</div>
-        </div>
-        <div class="col-card">
-          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">📍</div>
-          <div class="bf-title">Entrega donde estés — con Uber de retorno</div>
-          <div class="bf-desc">El chofer lleva el auto a tu puerta. Si no quieres conductor ese día, sale en Uber. Al terminar tus días, va en Uber a recoger el carro y lo conduce de vuelta. Sin motos, sin complicaciones.</div>
-        </div>
-        <div class="col-card">
-          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">✨</div>
-          <div class="bf-title">Detailing mensual completo</div>
-          <div class="bf-desc">Una vez al mes: pulida de pintura, cera carnauba, ozono interior, tratamiento de cueros y plásticos. El auto no solo está limpio — está en condición de showroom. Siempre.</div>
-        </div>
-        <div class="col-card">
-          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🎁</div>
-          <div class="bf-title">Kit de bienvenida en cada uso</div>
-          <div class="bf-desc">Agua premium, fragancia de lujo activa, tarjeta personalizada con tu nombre y ruta sugerida curada por Fractal. Cada vez que tomas el carro es un momento, no un trámite.</div>
-        </div>
-        <div class="col-card">
-          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🛡️</div>
-          <div class="bf-title">Solo talleres oficiales de marca</div>
-          <div class="bf-desc">Cero multimarcas. Cero mecánicos de confianza. Cada revisión en concesionario oficial certificado. Recibes reporte digital con fotos después de cada servicio. El activo siempre en manos expertas.</div>
-        </div>
-        <div class="col-card">
-          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🔄</div>
-          <div class="bf-title">Sustituto premium garantizado</div>
-          <div class="bf-desc">Si tu auto está en mantenimiento durante tus días, Fractal garantiza un vehículo sustituto de igual o mayor categoría. Nunca perderás un día por causas operativas.</div>
-        </div>
-        <div class="col-card">
-          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">📸</div>
-          <div class="bf-title">Fotografía mensual del activo</div>
-          <div class="bf-desc">Fractal envía foto del estado del vehículo cada mes — pintura, interior, odómetro, llantas. Total transparencia sobre el activo que co-posees. Nunca te enteras de algo malo por sorpresa.</div>
-        </div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">🚿</div><div class="bf-title">Lavada premium 2×/semana</div><div class="bf-desc">Lavado a mano con productos profesionales. Nunca túnel automático. Ozono interior mensual. El auto siempre luce como el día que salió del concesionario.</div></div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">🏢</div><div class="bf-title">Parqueadero cubierto premium</div><div class="bf-desc">Espacio exclusivo con cámaras 24/7, control de acceso. El Poblado, Chicó o El Nogal según la ciudad. Los supercars no se parquean en la calle — nunca.</div></div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">🧑‍✈️</div><div class="bf-title">Chofer de planta uniformado</div><div class="bf-desc">Conductor profesional asignado al vehículo, certificado, uniformado. Siempre el mismo — te conoce, conoce tus rutas. No es un conductor casual.</div></div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">📍</div><div class="bf-title">Entrega donde estés</div><div class="bf-desc">El chofer lleva el auto a tu puerta. Si no quieres conductor ese día, sale en Uber. Al terminar tus días, va en Uber a recoger el carro y lo conduce de vuelta.</div></div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">✨</div><div class="bf-title">Detailing mensual completo</div><div class="bf-desc">Pulida de pintura, cera carnauba, ozono interior, tratamiento de cueros. El auto en condición de showroom permanente.</div></div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">🎁</div><div class="bf-title">Kit de bienvenida en cada uso</div><div class="bf-desc">Agua premium, fragancia de lujo activa, tarjeta personalizada con tu nombre y ruta sugerida curada por Fractal. Cada uso es un momento.</div></div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">🛡️</div><div class="bf-title">Solo talleres oficiales de marca</div><div class="bf-desc">Cero multimarcas. Cada revisión en concesionario oficial certificado. Reporte digital con fotos después de cada servicio.</div></div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">🔄</div><div class="bf-title">Sustituto premium garantizado</div><div class="bf-desc">Si tu auto está en mantenimiento durante tus días, Fractal garantiza un vehículo sustituto de igual o mayor categoría.</div></div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">📸</div><div class="bf-title">Fotografía mensual del activo</div><div class="bf-desc">Fractal envía foto del estado del vehículo cada mes — pintura, interior, odómetro, llantas. Nunca te enteras de algo malo por sorpresa.</div></div>
       </div>
     </div>
   </div>
@@ -1029,76 +912,13 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
     <div class="sec-inner">
       <div class="sec-tag">Fractal Cars Club</div>
       <h2 class="sec-h2">Más allá del carro.<br><em>Una comunidad que abre puertas.</em></h2>
-      <p class="sec-p" style="margin-bottom:40px">Los mejores clubes de supercars del mundo — Supercar Sharing® en Suiza, Supercar Driver en UK, Freedom Supercars en EE.UU. — comparten un secreto: el verdadero valor no es el carro. Es la comunidad que viene con él. Fractal lo trae a Colombia.</p>
-
       <div class="three-col">
-        <div class="col-card">
-          <div class="col-num" style="font-size:36px">🏁</div>
-          <h4>Días de pista — Tocancipá y La Guaca</h4>
-          <p>2 track days al año incluidos en la membresía. Instructor de manejo deportivo certificado. Aprende el límite real del carro en un ambiente controlado y seguro. Lo que ningún dueño individual puede organizar solo.</p>
-        </div>
-        <div class="col-card">
-          <div class="col-num" style="font-size:36px">🛣️</div>
-          <h4>Road trips curados — 4 por año</h4>
-          <p>Medellín–Cartagena por la Troncal. Bogotá–Villa de Leyva. Eje Cafetero. Ruta de la Sal. Todos los co-propietarios del portafolio Fractal Cars van juntos. Hoteles premium, restaurantes reservados, rutas diseñadas para el placer de conducir.</p>
-        </div>
-        <div class="col-card">
-          <div class="col-num" style="font-size:36px">🤝</div>
-          <h4>Red de negocios entre miembros</h4>
-          <p>Los co-propietarios Fractal comparten perfil: empresarios, ejecutivos, profesionales de alto nivel. El club facilita conexiones reales — cenas trimestrales privadas, WhatsApp exclusivo, presentaciones entre miembros. El networking más eficiente es el que ocurre de forma natural.</p>
-        </div>
-        <div class="col-card">
-          <div class="col-num" style="font-size:36px">🎬</div>
-          <h4>Cobertura fotográfica profesional</h4>
-          <p>En cada road trip y evento del club, un fotógrafo y videógrafo profesional documenta los momentos. El contenido es tuyo. También aparece en el Instagram de Fractal — con tu permiso — convirtiendo tu experiencia en la mejor publicidad posible.</p>
-        </div>
-        <div class="col-card">
-          <div class="col-num" style="font-size:36px">🏎️</div>
-          <h4>Acceso a lanzamientos y eventos de marca</h4>
-          <p>Porsche Experience Days, eventos de Ferrari Club Colombia, presentaciones de nuevos modelos. Los co-propietarios Fractal tienen acceso preferencial — no como clientes, sino como parte de una comunidad reconocida por las marcas.</p>
-        </div>
-        <div class="col-card">
-          <div class="col-num" style="font-size:36px">🔁</div>
-          <h4>Rotación del portafolio cada 3 años</h4>
-          <p>Cada vehículo sale del portafolio antes de que la depreciación sea severa. Los co-propietarios deciden: vender y repartir plusvalía, o reinvertir en el modelo siguiente. El activo siempre renovado, siempre con valor.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
-
-  <!-- PROCESO DE INGRESO -->
-  <div class="sec" style="padding-top:56px;padding-bottom:56px">
-    <div class="sec-inner">
-      <div class="sec-tag">Proceso de ingreso</div>
-      <h2 class="sec-h2">No cualquiera puede<br>ser co-propietario.</h2>
-      <p class="sec-p" style="margin-bottom:40px">Esto no es exclusividad arbitraria — es protección del activo y de la comunidad. Cada vehículo vale entre $620M y $1.200M. Los 8 co-propietarios deben ser personas que cuiden el activo como si fuera 100% suyo.</p>
-
-      <div class="legal-steps">
-        <div class="ls-item">
-          <div class="ls-num">01</div>
-          <div class="ls-title">Registro e interés</div>
-          <div class="ls-desc">Indicas qué vehículo te interesa, tu ciudad y preferencia de uso. Fractal evalúa disponibilidad y fit con la comunidad existente del vehículo.</div>
-          <div class="ls-arrow">→</div>
-        </div>
-        <div class="ls-item">
-          <div class="ls-num">02</div>
-          <div class="ls-title">Validación del perfil</div>
-          <div class="ls-desc">Licencia vigente con mínimo 3 años. Sin accidentes graves en los últimos 2 años. Edad mínima 25 años. Entrevista breve con el equipo Fractal.</div>
-          <div class="ls-arrow">→</div>
-        </div>
-        <div class="ls-item">
-          <div class="ls-num">03</div>
-          <div class="ls-title">Bienvenida de la comunidad</div>
-          <div class="ls-desc">Los co-propietarios actuales del vehículo conocen al nuevo miembro. No hay veto formal, pero la comunidad importa — Fractal presenta al candidato antes de cerrar.</div>
-          <div class="ls-arrow">→</div>
-        </div>
-        <div class="ls-item">
-          <div class="ls-num">04</div>
-          <div class="ls-title">Firma y primera entrega</div>
-          <div class="ls-desc">Firma del contrato de co-propiedad (SAS). Pago de la participación. Entrega cinematográfica del vehículo — cubierto con tela negra, iluminación, música. No es una transacción. Es un momento.</div>
-        </div>
+        <div class="col-card"><div class="col-num" style="font-size:36px">🏁</div><h4>Días de pista — Tocancipá y La Guaca</h4><p>2 track days al año incluidos. Instructor de manejo deportivo certificado. Aprende el límite real del carro en ambiente controlado.</p></div>
+        <div class="col-card"><div class="col-num" style="font-size:36px">🛣️</div><h4>Road trips curados — 4 por año</h4><p>Medellín–Cartagena por la Troncal. Bogotá–Villa de Leyva. Eje Cafetero. Ruta de la Sal. Hoteles premium, restaurantes reservados, rutas diseñadas para el placer de conducir.</p></div>
+        <div class="col-card"><div class="col-num" style="font-size:36px">🤝</div><h4>Red de negocios entre miembros</h4><p>Cenas trimestrales privadas, WhatsApp exclusivo, presentaciones entre miembros. El networking más eficiente ocurre de forma natural.</p></div>
+        <div class="col-card"><div class="col-num" style="font-size:36px">🎬</div><h4>Cobertura fotográfica profesional</h4><p>Fotógrafo y videógrafo en cada road trip y evento del club. El contenido es tuyo. Fractal lo usa con tu permiso.</p></div>
+        <div class="col-card"><div class="col-num" style="font-size:36px">🏎️</div><h4>Acceso a eventos de marca</h4><p>Porsche Experience Days, eventos de Ferrari Club Colombia, presentaciones de nuevos modelos. Acceso preferencial como comunidad reconocida.</p></div>
+        <div class="col-card"><div class="col-num" style="font-size:36px">🔁</div><h4>Rotación del portafolio cada 3 años</h4><p>Cada vehículo sale antes de que la depreciación sea severa. Los co-propietarios deciden: vender y repartir plusvalía, o reinvertir en el modelo siguiente.</p></div>
       </div>
     </div>
   </div>
@@ -1110,225 +930,345 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
     <div class="sec-inner">
       <div class="sec-tag">Calculadora universal</div>
       <h2 class="sec-h2">¿Cuánto costará<br><em>tu vehículo específico?</em></h2>
-      <p class="sec-p" style="margin-bottom:40px">Ingresa el precio de cualquier vehículo — desde una Tesla Model Y de $148M hasta un Ferrari de $1.200M. La calculadora te muestra la entrada por socio, la cuota mensual todo incluido y el costo por día de uso real.</p>
+      <p class="sec-p" style="margin-bottom:32px">Ingresa el precio de cualquier vehículo. La calculadora muestra el capital que pones (y cuánto recuperas al vender), los costos operativos mensuales, la depreciación y el costo real por día de uso.</p>
 
       <div style="background:#09090a;border:1px solid rgba(122,116,104,.15);padding:40px 48px">
-
-        <!-- INPUTS -->
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:32px">
-
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:28px">
           <div>
             <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-bottom:10px">Precio del vehículo (COP)</div>
             <div style="display:flex;align-items:center;border:1px solid rgba(122,116,104,.2);background:#0a0a08;margin-bottom:8px">
               <span style="padding:12px 14px;font-size:14px;color:var(--stone);border-right:1px solid rgba(122,116,104,.12)">$</span>
-              <input type="text" id="cv-precio" placeholder="148.000.000" autocomplete="off"
+              <input type="text" id="cv-precio" placeholder="620.000.000" autocomplete="off"
                 style="flex:1;background:transparent;border:none;color:var(--cream);padding:12px 14px;font-family:var(--sans);font-size:14px;outline:none"
                 oninput="onCvPrecio(this)" onblur="formatCvPrecio(this)">
             </div>
             <div style="display:flex;gap:6px;flex-wrap:wrap">
               <button class="cv-preset" data-v="148000000" onclick="setCvPreset(this)">$148M</button>
               <button class="cv-preset" data-v="300000000" onclick="setCvPreset(this)">$300M</button>
-              <button class="cv-preset" data-v="620000000" onclick="setCvPreset(this)">$620M</button>
+              <button class="cv-preset active" data-v="620000000" onclick="setCvPreset(this)">$620M</button>
               <button class="cv-preset" data-v="900000000" onclick="setCvPreset(this)">$900M</button>
               <button class="cv-preset" data-v="1200000000" onclick="setCvPreset(this)">$1.200M</button>
             </div>
           </div>
-
           <div>
             <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-bottom:10px">Número de socios</div>
             <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
               <button class="cv-socios active" data-s="8" onclick="setCvSocios(this)">8 socios</button>
               <button class="cv-socios" data-s="6" onclick="setCvSocios(this)">6 socios</button>
               <button class="cv-socios" data-s="4" onclick="setCvSocios(this)">4 socios</button>
-              <button class="cv-socios" data-s="2" onclick="setCvSocios(this)">2 socios</button>
             </div>
-            <div style="font-size:11px;color:rgba(122,116,104,.45);margin-top:6px;line-height:1.5">Fractal recomienda 8 socios para maximizar la eficiencia de costos.</div>
+            <div style="font-size:11px;color:rgba(122,116,104,.4);margin-top:6px">Fractal recomienda 8 socios para maximizar la eficiencia.</div>
           </div>
-
           <div>
             <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-bottom:10px">Nombre del vehículo</div>
-            <input type="text" id="cv-nombre" placeholder="Tesla Model Y, Porsche 911..." autocomplete="off"
-              style="width:100%;background:#0a0a08;border:1px solid rgba(122,116,104,.2);color:var(--cream);padding:12px 14px;font-family:var(--sans);font-size:14px;outline:none;margin-bottom:8px"
+            <input type="text" id="cv-nombre" placeholder="Porsche 911, Ferrari Roma..." autocomplete="off"
+              style="width:100%;background:#0a0a08;border:1px solid rgba(122,116,104,.2);color:var(--cream);padding:12px 14px;font-family:var(--sans);font-size:14px;outline:none"
               oninput="calcVehiculo()">
-            <div style="font-size:11px;color:rgba(122,116,104,.45);line-height:1.5">Solo para identificar el cálculo. No afecta los números.</div>
           </div>
-
         </div>
 
-        <!-- RESULTADO PRINCIPAL -->
         <div id="cv-result" style="display:none">
-
-          <div id="cv-nombre-display" style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(122,116,104,.12)"></div>
-
-          <!-- BIG NUMBERS — MODELO CORRECTO -->
+          <div id="cv-nombre-display" style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--cream);margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid rgba(122,116,104,.12)"></div>
           <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.12);margin-bottom:8px">
-            <div style="background:#0d0d0b;padding:22px 18px;text-align:center">
+            <div style="background:#0d0d0b;padding:20px 16px;text-align:center">
               <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Capital entrada<br><span style="color:rgba(120,200,120,.6)">lo recuperas al vender</span></div>
-              <div id="cv-entrada" style="font-family:var(--serif);font-size:clamp(15px,1.8vw,22px);font-weight:300;color:var(--cream);line-height:1.2">—</div>
+              <div id="cv-entrada" style="font-family:var(--serif);font-size:clamp(14px,1.6vw,20px);font-weight:300;color:var(--cream)">—</div>
             </div>
-            <div style="background:#0d0d0b;padding:22px 18px;text-align:center">
-              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Costos operativos/mes<br><span style="color:rgba(200,80,80,.6)">sí se pierden</span></div>
-              <div id="cv-cuota" style="font-family:var(--serif);font-size:clamp(15px,1.8vw,22px);font-weight:300;color:var(--cream);line-height:1.2">—</div>
+            <div style="background:#0d0d0b;padding:20px 16px;text-align:center">
+              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Cuota operativa/mes<br><span style="color:rgba(200,80,80,.6)">sí se pierde</span></div>
+              <div id="cv-cuota" style="font-family:var(--serif);font-size:clamp(14px,1.6vw,20px);font-weight:300;color:var(--cream)">—</div>
             </div>
-            <div style="background:#0d0d0b;padding:22px 18px;text-align:center">
-              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Depreciación/mes<br><span style="color:rgba(200,80,80,.6)">pérdida real del activo</span></div>
-              <div id="cv-dep" style="font-family:var(--serif);font-size:clamp(15px,1.8vw,22px);font-weight:300;color:rgba(245,240,232,.7);line-height:1.2">—</div>
+            <div style="background:#0d0d0b;padding:20px 16px;text-align:center">
+              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Deprec./mes tu parte<br><span style="color:rgba(200,80,80,.6)">pérdida real activo</span></div>
+              <div id="cv-dep" style="font-family:var(--serif);font-size:clamp(14px,1.6vw,20px);font-weight:300;color:rgba(245,240,232,.6)">—</div>
             </div>
-            <div style="background:#111009;padding:22px 18px;text-align:center;border:1px solid rgba(184,147,90,.25)">
-              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Costo real/día<br><span style="color:rgba(184,147,90,.6)">operativos + deprec ÷ días</span></div>
-              <div id="cv-dia" style="font-family:var(--serif);font-size:clamp(22px,2.8vw,38px);font-weight:300;color:var(--gold);line-height:1">—</div>
+            <div style="background:#111009;padding:20px 16px;text-align:center;border:1px solid rgba(184,147,90,.25)">
+              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Costo real/día<br><span style="color:rgba(184,147,90,.6)">operativos+deprec÷días</span></div>
+              <div id="cv-dia" style="font-family:var(--serif);font-size:clamp(20px,2.5vw,32px);font-weight:300;color:var(--gold)">—</div>
             </div>
           </div>
           <div id="cv-recuperas" style="font-size:12px;color:rgba(120,200,120,.65);padding:8px 14px;margin-bottom:16px;background:rgba(120,200,120,.04);border:1px solid rgba(120,200,120,.1)"></div>
-
-          <!-- DESGLOSE COMPLETO -->
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
-
             <div>
-              <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Desglose costos mensuales — activo completo</div>
-              <div id="cv-desglose" style="display:flex;flex-direction:column"></div>
-              <div id="cv-total-row" style="display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid rgba(184,147,90,.2);margin-top:4px">
-                <span style="font-size:13px;font-weight:500;color:var(--cream)">Total mensual activo completo</span>
-                <span id="cv-total" style="font-family:var(--serif);font-size:18px;color:var(--gold)">—</span>
+              <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Desglose costos operativos anuales</div>
+              <div id="cv-desglose"></div>
+              <div style="display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid rgba(184,147,90,.2);margin-top:4px;font-size:13px">
+                <span style="color:var(--cream);font-weight:500">Total operativos + deprec. año</span>
+                <span id="cv-total" style="font-family:var(--serif);font-size:16px;color:var(--gold)">—</span>
               </div>
             </div>
-
             <div>
-              <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Comparativo costo por día de uso</div>
-              <div style="display:flex;flex-direction:column;gap:10px">
-                <div style="background:#0a0a08;padding:16px;border:1px solid rgba(122,116,104,.1)">
-                  <div style="font-size:11px;color:var(--stone);margin-bottom:4px">Alquiler de lujo en el mercado</div>
-                  <div style="font-family:var(--serif);font-size:24px;color:rgba(200,80,80,.8);font-weight:300">$2.500.000–$5.000.000/día</div>
-                </div>
-                <div style="background:#0a0a08;padding:16px;border:1px solid rgba(184,147,90,.2)">
-                  <div style="font-size:11px;color:var(--stone);margin-bottom:4px">Auto propio (costo real total ÷ 20 días uso)</div>
-                  <div id="cv-dia-propio" style="font-family:var(--serif);font-size:24px;color:rgba(200,80,80,.7);font-weight:300">—</div>
-                </div>
-                <div style="background:#111009;padding:16px;border:1px solid rgba(184,147,90,.3)">
-                  <div style="font-size:11px;color:var(--gold);margin-bottom:4px">Fractal — tu costo por día real</div>
-                  <div id="cv-dia-fractal" style="font-family:var(--serif);font-size:32px;color:var(--gold);font-weight:300">—</div>
-                </div>
-                <div id="cv-ahorro-box" style="background:#09090a;padding:12px 16px;border:1px solid rgba(122,116,104,.1);font-size:12px;color:var(--stone);line-height:1.6"></div>
+              <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Costo por día — comparativo</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="background:#0a0a08;padding:14px;border:1px solid rgba(122,116,104,.1)"><div style="font-size:11px;color:var(--stone);margin-bottom:4px">Alquiler de lujo en el mercado</div><div style="font-family:var(--serif);font-size:20px;color:rgba(200,80,80,.8)">$2.500.000–$5.000.000/día</div></div>
+                <div style="background:#0a0a08;padding:14px;border:1px solid rgba(122,116,104,.1)"><div style="font-size:11px;color:var(--stone);margin-bottom:4px">Auto propio (operativos+deprec ÷ 20 días)</div><div id="cv-dia-propio" style="font-family:var(--serif);font-size:20px;color:rgba(200,80,80,.7)">—</div></div>
+                <div style="background:#111009;padding:14px;border:1px solid rgba(184,147,90,.3)"><div style="font-size:11px;color:var(--gold);margin-bottom:4px">Fractal — tu costo real por día</div><div id="cv-dia-fractal" style="font-family:var(--serif);font-size:28px;color:var(--gold)">—</div></div>
+                <div id="cv-ahorro-box" style="background:#09090a;padding:10px 14px;border:1px solid rgba(122,116,104,.1);font-size:12px;color:var(--stone);line-height:1.6"></div>
               </div>
             </div>
-
           </div>
-
-          <div style="font-size:11px;color:rgba(122,116,104,.35);margin-top:20px;line-height:1.5;padding-top:16px;border-top:1px solid rgba(122,116,104,.08)">
-            Cálculo estimado. Incluye: seguro todo riesgo 2.5% anual, chofer de planta + prestaciones, Uber logístico entrega/recogida, parqueadero cubierto premium, lavada premium 2×/semana, mantenimiento preventivo oficial 2.4% anual (mín. $800k), fondo contingencias 1% anual (mín. $400k), combustible operativo, SOAT y fee operativo Fractal. Valores para Medellín y Bogotá — pueden variar.
-          </div>
+          <div style="font-size:11px;color:rgba(122,116,104,.35);margin-top:16px;line-height:1.5;padding-top:14px;border-top:1px solid rgba(122,116,104,.08)">Costos operativos incluyen: seguro 2.5%/año, chofer+prestaciones, Uber logístico, parqueadero cubierto, lavada 2×/semana, mantenimiento oficial 2.4%/año (mín $800k), fondo contingencias 1%/año, combustible, SOAT y fee Fractal. Depreciación estimada al 10% anual. Valores Medellín y Bogotá.</div>
         </div>
-
-        <!-- EMPTY STATE -->
         <div id="cv-empty" style="text-align:center;padding:40px 0;color:var(--stone)">
-          <div style="font-family:var(--serif);font-size:20px;margin-bottom:8px;color:rgba(245,240,232,.4)">Ingresa el precio del vehículo para ver el cálculo</div>
-          <div style="font-size:13px">Ejemplo: Tesla Model Y = $148.000.000</div>
+          <div style="font-family:var(--serif);font-size:18px;color:rgba(245,240,232,.4);margin-bottom:8px">Ingresa el precio del vehículo</div>
+          <div style="font-size:13px">Ejemplo: Porsche 911 = $620.000.000</div>
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- PORTAFOLIO Y COSTOS -->
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- PORTAFOLIO -->
   <div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:56px">
     <div class="sec-inner">
       <div class="sec-tag">Portafolio y costos reales</div>
-      <h2 class="sec-h2">6 marcas. Costos transparentes.<br>Sin sorpresas.</h2>
-      <p class="sec-p" style="margin-bottom:32px">Cuota mensual todo incluido por 1/8 de participación. Seguro + chofer + Uber logístico + parqueadero + lavada + mantenimiento + fee Fractal.</p>
-
+      <h2 class="sec-h2">6 marcas. Todo incluido.<br>Sin sorpresas.</h2>
+      <p class="sec-p" style="margin-bottom:24px">Costo real por día = (operativos mensuales + depreciación mensual) ÷ días de uso. El capital de entrada no es un gasto — lo recuperas al vender.</p>
       <table class="proy-table">
         <thead>
-          <tr>
-            <th>Vehículo</th>
-            <th>Activo total</th>
-            <th>Entrada 1/8</th>
-            <th>Cuota mensual 1/8</th>
-            <th>Días/año 1/8</th>
-            <th>$/día de uso</th>
-          </tr>
+          <tr><th>Vehículo</th><th>Activo</th><th>Entrada 1/8</th><th>Cuota op./mes 1/8</th><th>Deprec./mes 1/8</th><th>Costo real/día</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Lexus LC 500 / LX 600</td>
-            <td class="muted">$550M</td>
-            <td class="muted">$68.750.000</td>
-            <td class="gold-td">$1.997.000</td>
-            <td class="muted">44+ días</td>
-            <td class="gold-td">$363.000</td>
-          </tr>
-          <tr>
-            <td>Range Rover Autobiography</td>
-            <td class="muted">$700M</td>
-            <td class="muted">$87.500.000</td>
-            <td class="gold-td">$2.054.000</td>
-            <td class="muted">44+ días</td>
-            <td class="gold-td">$373.000</td>
-          </tr>
-          <tr>
-            <td>Porsche 911 Carrera / Cayenne GTS</td>
-            <td class="muted">$620M</td>
-            <td class="muted">$77.500.000</td>
-            <td class="gold-td">$2.020.000</td>
-            <td class="muted">44+ días</td>
-            <td class="gold-td">$367.000</td>
-          </tr>
-          <tr>
-            <td>Lamborghini Urus Performante</td>
-            <td class="muted">$900M</td>
-            <td class="muted">$112.500.000</td>
-            <td class="gold-td">$2.121.000</td>
-            <td class="muted">44+ días</td>
-            <td class="gold-td">$386.000</td>
-          </tr>
-          <tr>
-            <td>Bentley Continental GT / Bentayga</td>
-            <td class="muted">$900M</td>
-            <td class="muted">$112.500.000</td>
-            <td class="gold-td">$2.121.000</td>
-            <td class="muted">44+ días</td>
-            <td class="gold-td">$386.000</td>
-          </tr>
-          <tr>
-            <td>Ferrari Roma / Portofino M</td>
-            <td class="muted">$1.200M</td>
-            <td class="muted">$150.000.000</td>
-            <td class="gold-td">$2.234.000</td>
-            <td class="muted">44+ días</td>
-            <td class="gold-td">$406.000</td>
-          </tr>
-          <tr class="total-row">
-            <td colspan="5">Alquiler superdeportivo mercado colombiano (referencia)</td>
-            <td class="gold-td" style="color:rgba(200,80,80,.8)">$2.500.000–$5.000.000/día</td>
-          </tr>
+          <tr><td>Lexus LC 500 / LX 600</td><td class="muted">$550M</td><td class="muted">$68.750.000</td><td class="gold-td">$1.922.292</td><td class="muted">$572.917</td><td class="gold-td">$646.000</td></tr>
+          <tr><td>Range Rover Autobiography</td><td class="muted">$700M</td><td class="muted">$87.500.000</td><td class="gold-td">$1.978.958</td><td class="muted">$729.167</td><td class="gold-td">$712.000</td></tr>
+          <tr><td>Porsche 911 Carrera</td><td class="muted">$620M</td><td class="muted">$77.500.000</td><td class="gold-td">$1.671.042</td><td class="muted">$645.833</td><td class="gold-td">$603.000</td></tr>
+          <tr><td>Lamborghini Urus Performante</td><td class="muted">$900M</td><td class="muted">$112.500.000</td><td class="gold-td">$2.121.250</td><td class="muted">$937.500</td><td class="gold-td">$791.000</td></tr>
+          <tr><td>Bentley Continental GT</td><td class="muted">$900M</td><td class="muted">$112.500.000</td><td class="gold-td">$2.121.250</td><td class="muted">$937.500</td><td class="gold-td">$791.000</td></tr>
+          <tr><td>Ferrari Roma / Portofino M</td><td class="muted">$1.200M</td><td class="muted">$150.000.000</td><td class="gold-td">$2.233.750</td><td class="muted">$1.250.000</td><td class="gold-td">$960.000</td></tr>
+          <tr class="total-row"><td colspan="5">Alquiler superdeportivo en el mercado colombiano</td><td class="gold-td" style="color:rgba(200,80,80,.8)">$2.500.000–$5.000.000/día</td></tr>
         </tbody>
       </table>
-      <p style="font-size:11px;color:rgba(122,116,104,.35);margin-top:12px;line-height:1.6">Cuota mensual incluye: seguro todo riesgo (2.5% activo/año ÷ 8), chofer de planta + prestaciones (÷ 8), Uber logístico entrega + recogida (÷ 8), parqueadero cubierto premium (÷ 8), lavada a mano 2×/semana (÷ 8), mantenimiento oficial + detailing mensual (÷ 8), fondo de contingencias, fee operativo Fractal. Valores estimados Medellín / Bogotá.</p>
+      <p style="font-size:11px;color:rgba(122,116,104,.35);margin-top:10px;line-height:1.5">Costo real/día = (cuota operativa + depreciación 10%/año) ÷ ~46 días de uso/año por 1/8. El capital de entrada (~87% recuperable en año 3) no se incluye en el costo diario.</p>
     </div>
   </div>
 
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
 
-  <!-- PICO Y PLACA SUB-PANEL -->
-  <div id="cars-sub-pyp" style="display:none">
 
   <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
 
-  <div class="sec" style="padding-top:56px;padding-bottom:0">
+  <!-- CTA -->
+  <div class="sec" style="padding-top:0;padding-bottom:72px">
     <div class="sec-inner">
-      <div class="sec-tag">Optimización Pico y Placa · Exclusivo Colombia</div>
-      <h2 class="sec-h2">Tu solución definitiva<br><em>para los días sin carro.</em></h2>
-      <p class="sec-p" style="margin-bottom:16px">En Bogotá y Medellín el pico y placa te quita el carro lunes a viernes en las horas pico. Con este modelo 5 socios comparten un vehículo de lujo asignado por día de la semana según su placa. El chofer está todos los días y cada noche se desplaza al domicilio del socio del día siguiente.</p>
-      <p class="sec-p" style="margin-bottom:32px">No es un taxi de lujo. Es tu vehículo — con tu chofer — esperándote cada mañana en la puerta de tu casa.</p>
+      <div class="vert-cta">
+        <div>
+          <div class="vc-title">¿Cuál es tu supercar<br>y en qué ciudad arrancamos?</div>
+          <div class="vc-sub">Fractal Premium Cars está en desarrollo. Regístrate con tu preferencia de marca, ciudad y presupuesto — los primeros en registrar tienen prioridad de selección y son parte de la comunidad fundadora.</div>
+        </div>
+        <a href="index.html#contacto" class="vc-btn">Ser co-propietario fundador →</a>
+      </div>
+    </div>
+  </div>
 
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.12);margin-bottom:40px">
-        <div style="background:#0d0d0b;padding:28px 24px;text-align:center">
-          <div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:8px">Máximo de socios</div>
-          <div style="font-family:var(--serif);font-size:48px;font-weight:300;color:var(--gold);line00am y 3:00–7:00pm' },
-  martes:     { placas: '3 · 4', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
-  miercoles:  { placas: '5 · 6', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
-  jueves:     { placas: '7 · 8', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
-  viernes:    { placas: '9 · 0', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
-};
+</div>
+<!-- /FRACTAL PREMIUM CARS -->
+<!-- FRACTAL PICO Y PLACA -->
+<div id="panel-pyp" class="vert-content">
 
+  <div class="sec" style="background:#09090a;padding-bottom:0">
+    <div class="sec-inner">
+      <div class="two-col">
+        <div>
+          <div class="sec-tag">Optimización Pico y Placa · Exclusivo Colombia</div>
+          <h2 class="sec-h2">Tu día sin carro resuelto.<br><em>Con el vehículo que siempre quisiste.</em></h2>
+          <p class="sec-p">En Bogotá y Medellín el pico y placa te quita el carro lunes a viernes en horas pico. Con este modelo 5 socios comparten un vehículo de lujo — cada uno tiene asignado su día según su placa. El chofer está todos los días hábiles y cada noche se desplaza al domicilio del socio del día siguiente.</p>
+          <p class="sec-p" style="margin-top:14px">No es un taxi de lujo. Es <em>tu vehículo</em> — con tu chofer — esperándote cada mañana en la puerta de tu casa.</p>
+        </div>
+        <div>
+          <div class="stat-grid" style="margin:0">
+            <div class="stat-box"><div class="stat-num">5</div><div class="stat-label">Socios máximo<br>L · M · X · J · V</div></div>
+            <div class="stat-box"><div class="stat-num">5/5</div><div class="stat-label">Chofer de planta<br>todos los días hábiles</div></div>
+            <div class="stat-box"><div class="stat-num">~48</div><div class="stat-label">Días disponibles<br>al año por socio</div></div>
+            <div class="stat-box"><div class="stat-num">$0</div><div class="stat-label">Coordinación<br>de tu parte</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- ASIGNACIÓN -->
+  <div class="sec" style="padding-top:56px;padding-bottom:48px">
+    <div class="sec-inner">
+      <div class="sec-tag">Asignación fija — 1 socio por día</div>
+      <h2 class="sec-h2">5 socios · 5 días · 5 placas distintas.</h2>
+      <p class="sec-p" style="margin-bottom:28px">El vehículo Fractal P&P tiene placa diferente a la de todos los socios. Fractal verifica las placas en admisión para garantizar cobertura completa L–V.</p>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(122,116,104,.1);margin-bottom:16px">
+        <div style="background:#0a0a08;padding:20px 12px;text-align:center"><div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Socio 1</div><div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300;margin-bottom:4px">Lunes</div><div style="font-size:12px;color:var(--cream)">Placa ···1 o ···2</div></div>
+        <div style="background:#111009;padding:20px 12px;text-align:center;border:1px solid rgba(184,147,90,.1)"><div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Socio 2</div><div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300;margin-bottom:4px">Martes</div><div style="font-size:12px;color:var(--cream)">Placa ···3 o ···4</div></div>
+        <div style="background:#0a0a08;padding:20px 12px;text-align:center"><div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Socio 3</div><div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300;margin-bottom:4px">Miércoles</div><div style="font-size:12px;color:var(--cream)">Placa ···5 o ···6</div></div>
+        <div style="background:#111009;padding:20px 12px;text-align:center;border:1px solid rgba(184,147,90,.1)"><div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Socio 4</div><div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300;margin-bottom:4px">Jueves</div><div style="font-size:12px;color:var(--cream)">Placa ···7 o ···8</div></div>
+        <div style="background:#0a0a08;padding:20px 12px;text-align:center"><div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Socio 5</div><div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300;margin-bottom:4px">Viernes</div><div style="font-size:12px;color:var(--cream)">Placa ···9 o ···0</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- LOGÍSTICA DEL CHOFER -->
+  <div class="sec" style="background:#09090a;padding-top:48px;padding-bottom:48px">
+    <div class="sec-inner">
+      <div class="sec-tag">La logística del chofer</div>
+      <h2 class="sec-h2">Cada noche el carro<br>duerme en el próximo destino.</h2>
+      <div class="legal-steps">
+        <div class="ls-item"><div class="ls-num">AM</div><div class="ls-title">El carro llega a tu puerta</div><div class="ls-desc">El chofer llegó la noche anterior con el vehículo. A la hora que necesites el carro está abajo — impecable, combustible lleno. Solo bajas y entras.</div><div class="ls-arrow">→</div></div>
+        <div class="ls-item"><div class="ls-num">DÍA</div><div class="ls-title">El carro es tuyo todo el día</div><div class="ls-desc">Con chofer o sin él — tú decides. El chofer te lleva a reuniones, espera, te recoge. O lo dejas parqueado y lo llamas cuando lo necesites.</div><div class="ls-arrow">→</div></div>
+        <div class="ls-item"><div class="ls-num">PM</div><div class="ls-title">Al finalizar tu día</div><div class="ls-desc">El chofer recibe por la APP Fractal el domicilio del socio del día siguiente. Se desplaza en Uber — promedio $25.000, dividido entre los 5 socios.</div><div class="ls-arrow">→</div></div>
+        <div class="ls-item"><div class="ls-num">NOCHE</div><div class="ls-title">El carro duerme en el próximo destino</div><div class="ls-desc">Queda en el domicilio del socio del día siguiente. A las 7am está listo. Ningún socio coordina nada — la APP lo gestiona todo automáticamente.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- COSTOS REALES P&P -->
+  <div class="sec" style="padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Costos reales — modelo P&P</div>
+      <h2 class="sec-h2">Lo que pagas y lo que pierdes<br>son cosas distintas.</h2>
+      <p class="sec-p" style="margin-bottom:32px">El capital que pones al entrar <strong style="color:var(--cream)">no es un gasto</strong> — es tu parte del activo y lo recuperas al vender en año 3. Lo que sí se pierde son los costos operativos y la depreciación. Eso es tu costo real mensual.</p>
+
+      <div class="two-col" style="margin-bottom:32px">
+        <div>
+          <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Costos operativos mensuales — activo completo</div>
+          <div class="row-table">
+            <div class="rt-row"><span class="rt-label">Seguro todo riesgo (2.5% del activo ÷ 12)</span><span class="rt-val" id="pyp-seguro">—</span></div>
+            <div class="rt-row"><span class="rt-label">Chofer de planta 5 días + prestaciones</span><span class="rt-val gold">$4.200.000</span></div>
+            <div class="rt-row"><span class="rt-label">Uber nocturno reposicionamiento (22 noches)</span><span class="rt-val gold">$550.000</span></div>
+            <div class="rt-row"><span class="rt-label">Parqueadero cubierto premium</span><span class="rt-val gold">$2.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Lavada premium 2×/semana a mano</span><span class="rt-val gold">$1.920.000</span></div>
+            <div class="rt-row"><span class="rt-label">Mantenimiento oficial (2.4% anual ÷ 12)</span><span class="rt-val" id="pyp-manto">—</span></div>
+            <div class="rt-row"><span class="rt-label">Combustible operativo</span><span class="rt-val gold">$800.000</span></div>
+            <div class="rt-row"><span class="rt-label">SOAT + rodamiento prorrateo</span><span class="rt-val gold">$350.000</span></div>
+            <div class="rt-row"><span class="rt-label">Fondo contingencias (1% anual ÷ 12)</span><span class="rt-val" id="pyp-conting">—</span></div>
+            <div class="rt-row"><span class="rt-label">Fee operativo Fractal</span><span class="rt-val gold">$500.000</span></div>
+            <div class="rt-row total"><span class="rt-label">Total mensual activo completo</span><span class="rt-val gold" id="pyp-total-mes">—</span></div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Por socio (÷5) — lo que realmente pagas y pierdes</div>
+          <div class="row-table">
+            <div class="rt-row"><span class="rt-label">Capital entrada 1/5</span><span class="rt-val" style="color:rgba(120,200,120,.8)" id="pyp-entrada">—</span></div>
+            <div class="rt-row"><span class="rt-label">→ Recuperas al vender año 3 (~10%/año deprec.)</span><span class="rt-val" style="color:rgba(120,200,120,.7)" id="pyp-recuperas">—</span></div>
+            <div class="rt-row"><span class="rt-label">Cuota operativa mensual (÷5)</span><span class="rt-val gold" id="pyp-cuota">—</span></div>
+            <div class="rt-row"><span class="rt-label">Depreciación mensual tu parte (10%/año ÷ 12 ÷ 5)</span><span class="rt-val" id="pyp-dep">—</span></div>
+            <div class="rt-row total"><span class="rt-label">Costo real mensual (operativos + deprec.)</span><span class="rt-val gold" id="pyp-costo-real-mes">—</span></div>
+            <div class="rt-row"><span class="rt-label">Días de uso al mes (~4 días fijos)</span><span class="rt-val">~4 días</span></div>
+            <div class="rt-row total"><span class="rt-label">Costo real por día de uso</span><span class="rt-val gold" id="pyp-costo-dia">—</span></div>
+          </div>
+          <div style="margin-top:16px;padding:14px 16px;background:#0a0a08;border:1px solid rgba(184,147,90,.12)">
+            <div style="font-size:11px;color:var(--stone);margin-bottom:6px">Comparativo de mercado</div>
+            <div style="font-size:12px;color:rgba(245,240,232,.6)">Uber ejecutivo mismo trayecto: <strong style="color:rgba(200,80,80,.7)">$50.000–$120.000/viaje</strong></div>
+            <div style="font-size:12px;color:rgba(245,240,232,.6);margin-top:4px">Alquiler vehículo de lujo por día: <strong style="color:rgba(200,80,80,.7)">$500.000–$2.000.000</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALCULADORA P&P -->
+      <div style="background:#09090a;border:1px solid rgba(122,116,104,.15);padding:32px">
+        <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:20px">Calcula con cualquier vehículo</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:16px">
+          <div>
+            <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:8px">Precio del vehículo (COP)</div>
+            <div style="display:flex;align-items:center;border:1px solid rgba(122,116,104,.2);background:#0a0a08">
+              <span style="padding:11px 12px;color:var(--stone);border-right:1px solid rgba(122,116,104,.12);font-size:14px">$</span>
+              <input type="text" id="pyp-precio-inp" placeholder="148.000.000" autocomplete="off"
+                style="flex:1;background:transparent;border:none;color:var(--cream);padding:11px 12px;font-family:var(--sans);font-size:14px;outline:none"
+                oninput="calcPyp()" onblur="fmtPyp(this)">
+            </div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
+              <button class="pyp-pre" data-v="148000000" onclick="setPypPre(this)">$148M Tesla</button>
+              <button class="pyp-pre active" data-v="250000000" onclick="setPypPre(this)">$250M BMW</button>
+              <button class="pyp-pre" data-v="380000000" onclick="setPypPre(this)">$380M GLE</button>
+              <button class="pyp-pre" data-v="520000000" onclick="setPypPre(this)">$520M Cayenne</button>
+              <button class="pyp-pre" data-v="650000000" onclick="setPypPre(this)">$650M S-Class</button>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:8px">Nombre del vehículo</div>
+            <input type="text" id="pyp-nombre-inp" placeholder="ej: BMW Serie 5" autocomplete="off"
+              style="width:100%;background:#0a0a08;border:1px solid rgba(122,116,104,.2);color:var(--cream);padding:11px 12px;font-family:var(--sans);font-size:14px;outline:none"
+              oninput="calcPyp()">
+          </div>
+        </div>
+        <div id="pyp-calc-result" style="display:none;background:#0d0d0b;border:1px solid rgba(184,147,90,.15);padding:20px">
+          <div id="pyp-result-title" style="font-family:var(--serif);font-size:18px;color:var(--cream);margin-bottom:16px"></div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.12)">
+            <div style="background:#0a0a08;padding:16px;text-align:center">
+              <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Entrada 1/5<br><span style="color:rgba(120,200,120,.6)">lo recuperas</span></div>
+              <div id="pyp-r-entrada" style="font-family:var(--serif);font-size:20px;color:var(--cream)">—</div>
+            </div>
+            <div style="background:#0a0a08;padding:16px;text-align:center">
+              <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Cuota operativa<br>1/5 por mes</div>
+              <div id="pyp-r-cuota" style="font-family:var(--serif);font-size:20px;color:var(--cream)">—</div>
+            </div>
+            <div style="background:#0a0a08;padding:16px;text-align:center">
+              <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Deprec. mensual<br>tu parte 1/5</div>
+              <div id="pyp-r-dep" style="font-family:var(--serif);font-size:20px;color:rgba(245,240,232,.6)">—</div>
+            </div>
+            <div style="background:#111009;padding:16px;text-align:center;border:1px solid rgba(184,147,90,.2)">
+              <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Costo real/día<br>operativos + deprec ÷ 4</div>
+              <div id="pyp-r-dia" style="font-family:var(--serif);font-size:28px;color:var(--gold)">—</div>
+            </div>
+          </div>
+          <div id="pyp-r-nota" style="font-size:11px;color:rgba(122,116,104,.45);margin-top:10px;line-height:1.5"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- TABLA P&P INTERACTIVA -->
+  <div class="sec" style="background:#09090a;padding-top:48px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Consulta tu restricción</div>
+      <h2 class="sec-h2">¿Cuándo tienes pico y placa?</h2>
+      <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.15);padding:32px;margin-top:24px">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px">
+          <button class="pyp-btn active" data-dia="lunes" onclick="setPyp(this)">Lunes</button>
+          <button class="pyp-btn" data-dia="martes" onclick="setPyp(this)">Martes</button>
+          <button class="pyp-btn" data-dia="miercoles" onclick="setPyp(this)">Miércoles</button>
+          <button class="pyp-btn" data-dia="jueves" onclick="setPyp(this)">Jueves</button>
+          <button class="pyp-btn" data-dia="viernes" onclick="setPyp(this)">Viernes</button>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+          <div>
+            <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:8px">Placas restringidas ese día</div>
+            <div id="pyp-placas" style="font-family:var(--serif);font-size:56px;font-weight:300;color:var(--gold);letter-spacing:.1em">1 · 2</div>
+            <div id="pyp-horario" style="font-size:12px;color:var(--stone);margin-top:10px;line-height:1.8"></div>
+          </div>
+          <div style="background:#0d0d0b;padding:20px 24px;border:1px solid rgba(184,147,90,.12)">
+            <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Con Fractal P&P ese día</div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:13px;color:rgba(245,240,232,.7);display:flex;gap:10px"><span style="color:var(--gold)">—</span>El carro ya está en tu puerta desde la noche anterior</div>
+              <div style="font-size:13px;color:rgba(245,240,232,.7);display:flex;gap:10px"><span style="color:var(--gold)">—</span>El chofer te lleva a tus reuniones y espera</div>
+              <div style="font-size:13px;color:rgba(245,240,232,.7);display:flex;gap:10px"><span style="color:var(--gold)">—</span>Al terminar el chofer va en Uber al próximo socio</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="sec" style="padding-top:0;padding-bottom:72px">
+    <div class="sec-inner">
+      <div class="vert-cta">
+        <div>
+          <div class="vc-title">¿Cuál es tu día de pico y placa<br>y qué vehículo quieres?</div>
+          <div class="vc-sub">Máximo 5 socios por vehículo — las placas no pueden repetirse. Regístrate con tu placa, ciudad y vehículo preferido para asegurar tu cupo.</div>
+        </div>
+        <a href="index.html#contacto" class="vc-btn">Registrar para P&amp;P →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /FRACTAL PICO Y PLACA -->
+<script>
 function setPyp(btn) {
   document.querySelectorAll('.pyp-btn').forEach(function(b){ b.classList.remove('active'); });
   btn.classList.add('active');
@@ -1534,7 +1474,78 @@ function showVert(id) {
 
 // Open from URL hash
 var hash = window.location.hash.replace('#','');
-if (hash === 'nautico' || hash === 'cars' || hash === 'invest') showVert(hash);
+if (hash === 'nautico' || hash === 'cars' || hash === 'invest' || hash === 'pyp') showVert(hash);
+// ── PICO Y PLACA CALCULADORA ────────────────────────────────────────────────
+function setPypPre(btn) {
+  var v = parseInt(btn.dataset.v);
+  var inp = document.getElementById('pyp-precio-inp');
+  if (inp) inp.value = v.toLocaleString('es-CO');
+  document.querySelectorAll('.pyp-pre').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  calcPyp();
+}
+
+function fmtPyp(el) {
+  var raw = parseInt(el.value.replace(/[^0-9]/g,'')) || 0;
+  if (raw > 0) el.value = raw.toLocaleString('es-CO');
+}
+
+function calcPyp() {
+  var inp    = document.getElementById('pyp-precio-inp');
+  var precio = inp ? (parseInt(inp.value.replace(/[^0-9]/g,'')) || 0) : 0;
+  var nomb   = (document.getElementById('pyp-nombre-inp') || {}).value || '';
+  var cop    = function(n){ return '$' + Math.round(n).toLocaleString('es-CO'); };
+  function s(id,v){ var el=document.getElementById(id); if(el) el.textContent=v; }
+
+  // Update static table (variable part)
+  var seguro  = precio * 0.025 / 12;
+  var manto   = Math.max(800000, precio * 0.024 / 12);
+  var conting = Math.max(400000, precio * 0.010 / 12);
+  var fixed   = 4200000 + 550000 + 2000000 + 1920000 + 800000 + 350000 + 500000;
+  var totalMes= seguro + manto + conting + fixed;
+  s('pyp-seguro',  cop(seguro));
+  s('pyp-manto',   cop(manto));
+  s('pyp-conting', cop(conting));
+  s('pyp-total-mes', cop(totalMes));
+
+  var n = 5;
+  var entrada  = precio / n;
+  var cuota    = totalMes / n;
+  var dep      = (precio * 0.10 / 12) / n;
+  var recuperas= precio * Math.pow(0.90,3) / n;
+  var realMes  = cuota + dep;
+  var realDia  = realMes / 4;
+  s('pyp-entrada',       cop(entrada));
+  s('pyp-recuperas',     cop(recuperas));
+  s('pyp-cuota',         cop(cuota) + '/mes');
+  s('pyp-dep',           cop(dep) + '/mes');
+  s('pyp-costo-real-mes',cop(realMes) + '/mes');
+  s('pyp-costo-dia',     cop(realDia) + '/día');
+
+  // Calculator result
+  var res = document.getElementById('pyp-calc-result');
+  if (!precio || precio < 10000000) { if(res) res.style.display='none'; return; }
+  if (res) res.style.display = 'block';
+  s('pyp-r-entrada', cop(entrada));
+  s('pyp-r-cuota',   cop(cuota) + '/mes');
+  s('pyp-r-dep',     cop(dep) + '/mes');
+  s('pyp-r-dia',     cop(realDia) + '/día');
+  var rt = document.getElementById('pyp-result-title');
+  if (rt) rt.textContent = (nomb || 'Tu vehículo') + ' — 5 socios P&P';
+  var rn = document.getElementById('pyp-r-nota');
+  if (rn) rn.innerHTML = 'Capital entrada: ' + cop(entrada) + ' · Recuperas año 3: <strong style="color:rgba(120,200,120,.8)">' + cop(recuperas) + '</strong> · Pérdida real capital 3 años: ' + cop(entrada - recuperas);
+}
+
+(function(){
+  var d = document.querySelector('.pyp-pre[data-v="250000000"]');
+  if (d) { d.classList.add('active'); }
+  var inp = document.getElementById('pyp-precio-inp');
+  if (inp) inp.value = (250000000).toLocaleString('es-CO');
+  calcPyp();
+  var first = document.querySelector('.pyp-btn.active');
+  if (first) setPyp(first);
+})();
+
 </script>
 </body>
 </html>
